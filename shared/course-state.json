@@ -1,0 +1,16 @@
+{
+  "status": "待第二人补充完整10门清单并与第三人确认",
+  "cartInitialCount": 5,
+  "cartFinalCount": 10,
+  "knownCourses": [
+    { "title": "微积分A（1）", "credits": 5 },
+    { "title": "大学物理B(2)", "credits": 4 },
+    { "title": "花卉鉴赏", "credits": 2, "tags": ["早八精品", "美育好课"] },
+    { "title": "三年级女生射击", "credits": 1 }
+  ],
+  "cartCourses": [],
+  "paymentMode": "先用后付",
+  "estimatedSleepCost": null,
+  "sleepBalanceBeforeReceipts": null,
+  "receiptCosts": []
+}

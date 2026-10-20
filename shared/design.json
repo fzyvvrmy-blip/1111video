@@ -1,0 +1,13 @@
+{
+  "canvas": { "width": 1080, "height": 2376, "fps": 30 },
+  "primaryColor": "#660099",
+  "statusBarTime": "19:11",
+  "accountName": "小五同学",
+  "navigation": ["首页", "直播", "消息", "选课车", "我的课表"],
+  "font": null,
+  "fontStatus": "待三人统一并在工程中说明字体依赖",
+  "pfDaysRemaining": null,
+  "weekNumber": 8,
+  "weekNumberConfirmed": false,
+  "musicOwner": "总剪负责人待定"
+}
