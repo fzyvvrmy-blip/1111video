@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1080" height="2376" viewBox="0 0 1080 2376">
+  <title>共同锁屏 · 10月22日星期四 · 19:11 · v1</title>
+  <desc>无通知的交接锁屏。壁纸、状态栏、时间、日期和底部控件为独立图层；中间留给第三段的通知卡。</desc>
+
+  <g id="wallpaper">
+    <image width="1080" height="2376"
+           xlink:href="../../../assets/handoff/lockscreen-wallpaper.png"/>
+  </g>
+
+  <g id="status-bar" fill="#291A36" stroke="#291A36">
+    <!-- 无应用广告图标；电量沿用共同参考图的53%。 -->
+    <g id="wifi" fill="none" stroke-width="5" stroke-linecap="round">
+      <path d="M842 48 Q866 25 890 48"/>
+      <path d="M850 56 Q866 41 882 56"/>
+      <path d="M859 64 Q866 57 873 64"/>
+      <circle cx="866" cy="71" r="3" fill="#291A36" stroke="none"/>
+    </g>
+    <g id="cellular" stroke="none">
+      <rect x="912" y="63" width="6" height="11" rx="2"/>
+      <rect x="923" y="55" width="6" height="19" rx="2"/>
+      <rect x="934" y="47" width="6" height="27" rx="2"/>
+      <rect x="945" y="39" width="6" height="35" rx="2"/>
+    </g>
+    <g id="battery">
+      <rect x="973" y="40" width="59" height="33" rx="8" fill="none" stroke-width="3"/>
+      <rect x="1036" y="50" width="4" height="13" rx="2" stroke="none"/>
+      <text x="1002" y="64" text-anchor="middle" stroke="none"
+            font-family="DejaVu Sans" font-size="22" font-weight="bold">53</text>
+    </g>
+  </g>
+
+  <g id="locked-symbol" transform="translate(523 171)"
+     fill="none" stroke="#352042" stroke-width="4" stroke-linecap="round">
+    <path d="M7 19 V11 a10 10 0 0 1 20 0 v8"/>
+    <rect x="0" y="19" width="34" height="28" rx="7"/>
+    <path d="M17 30 v7"/>
+  </g>
+
+  <g id="clock" fill="#291A36">
+    <text x="540" y="432" text-anchor="middle"
+          font-family="DejaVu Sans" font-weight="200" font-size="224"
+          letter-spacing="-9">19:11</text>
+  </g>
+  <g id="date" fill="#432954">
+    <text x="540" y="522" text-anchor="middle"
+          font-family="Noto Sans CJK SC" font-weight="400" font-size="44"
+          letter-spacing="1">10月22日 星期四</text>
+  </g>
+
+  <!-- 通知区从 y=650 开始；11月2日复用壁纸与上方时间位置。 -->
+  <g id="notification-area"/>
+
+  <g id="lockscreen-controls" stroke="#FFFFFF" stroke-width="4"
+     stroke-linecap="round" stroke-linejoin="round">
+    <g id="flashlight" transform="translate(124 2194)">
+      <circle r="55" fill="#FFFFFF" fill-opacity="0.16" stroke-opacity="0.16" stroke-width="1"/>
+      <path d="M-17 -21 H17 V-10 L8 1 V24 H-8 V1 L-17 -10 Z" fill="none"/>
+      <path d="M-15 -11 H15 M0 -1 V9" fill="none"/>
+    </g>
+    <g id="camera" transform="translate(956 2194)">
+      <circle r="55" fill="#FFFFFF" fill-opacity="0.16" stroke-opacity="0.16" stroke-width="1"/>
+      <path d="M-22 -12 H-11 L-6 -20 H6 L11 -12 H22 a5 5 0 0 1 5 5 V17 a5 5 0 0 1 -5 5 H-22 a5 5 0 0 1 -5 -5 V-7 a5 5 0 0 1 5 -5 Z" fill="none"/>
+      <circle cy="5" r="10" fill="none"/>
+    </g>
+    <path id="swipe-chevron" d="M529 2257 L540 2246 L551 2257" fill="none" stroke-opacity="0.85" stroke-width="3"/>
+    <text x="540" y="2305" text-anchor="middle" stroke="none" fill="#FFFFFF" fill-opacity="0.9"
+          font-family="Noto Sans CJK SC" font-size="27" letter-spacing="3">上滑解锁</text>
+  </g>
+</svg>
