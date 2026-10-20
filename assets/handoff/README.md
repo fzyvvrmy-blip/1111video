@@ -2,7 +2,8 @@
 
 以下文件尚未完成，确认后按这些名称提交，不用空文件冒充成品：
 
-- product-list.png：第一人提出、第二人确认的商品列表停稳图。
+- live-card-end.png：第一人制作的直播课程卡尾帧。
+- product-list.png：第二人制作的商品列表首帧，与第一人核对课程信息；两段直接切换，不制作点击卡片动画。
 - lockscreen-wallpaper.png：第三人制作的共同锁屏壁纸。
 - lockscreen-oct22.png：第三人制作的10月22日19:11锁屏图，第二人和第三人共同使用。
 - lockscreen-nov02.png：第三人制作的11月2日19:11锁屏图。
