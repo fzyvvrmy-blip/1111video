@@ -1,0 +1,30 @@
+{
+  "status": "界面动效预览，主播为静态底图，无配音，无口型和手势动画",
+  "width": 1080,
+  "height": 2376,
+  "fps": 30,
+  "duration": 18.5,
+  "time": "19:11",
+  "cartInitialCount": 5,
+  "scenes": {
+    "openingFade": [0, 0.6],
+    "openingToHome": [1.45, 2.8],
+    "browseScroll": [3.2, 6.6],
+    "liveWindowAppear": [6.3, 7.0],
+    "liveWindowExpand": [8.4, 9.7],
+    "courseCardAppear": [14.4, 15.4],
+    "tailHold": [16.5, 18.5]
+  },
+  "referenceCrops": {
+    "banner": [22, 350, 804, 240],
+    "calculus": [25, 872, 383, 213],
+    "physics": [435, 872, 385, 213],
+    "shooting": [27, 1265, 382, 225],
+    "flowers": [435, 1265, 385, 225]
+  },
+  "audio": {
+    "voice": null,
+    "music": null,
+    "effects": "仅合成点击、直播打开与课程卡弹出提示音"
+  }
+}

@@ -1,0 +1,8 @@
+生成方式：内置image_gen图片编辑。
+输入：assets/references/live-v2.png。
+用途：清理界面，生成静态主播底图；未生成真人动画。
+
+Edit the supplied fictional Chinese campus livestream screenshot into ONE clean photographic presenter background plate for compositing a video UI.
+Preserve exactly this original fictional adult male university student identity: short tousled black hair, thin round glasses, cream hoodie, expressive friendly face, holding a lavender book titled "花卉鉴赏", one hand holding the book and the other index finger pointing at its floral cover. Keep the same illustrated lilac flower cover, camera position and cozy campus study studio with blurred chalkboard, books and warm desk lamp.
+Remove ALL mobile UI and overlays: status bar, profile header, LIVE labels, promotional badges, upper product overlay, floating hearts, chats, subtitles, bottom course card, bottom app navigation and Android controls. Reconstruct the study studio and body behind them naturally. No visible text anywhere except the book title "花卉鉴赏". Hoodie may retain simple purple architectural icon.
+Output a straight-on portrait photographic frame approx 1080x1920, filled by presenter and study room, no smartphone frame, no white margins. Presenter centered from head to waist, hands and entire book clearly visible, head near upper third. Natural human anatomy and faithful face; no new person, no motion blur. Clean image for overlaying independently animated interface.
