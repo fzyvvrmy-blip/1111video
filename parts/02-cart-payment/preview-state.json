@@ -1,0 +1,195 @@
+{
+  "version": "preview-v4",
+  "status": "预览数据，未写入共同清单；待与第一、三段确认",
+  "duration": 28,
+  "width": 1080,
+  "height": 2376,
+  "fps": 30,
+  "initialCount": 0,
+  "sleepBalance": 6,
+  "courses": [
+    {
+      "id": "calculus",
+      "title": "微积分A（1）",
+      "credits": 5,
+      "department": "数学系",
+      "tag": "年选2000+ · 两极分化",
+      "sleep": 1,
+      "initial": false,
+      "art": "calculus",
+      "required": true,
+      "category": "必修"
+    },
+    {
+      "id": "physics",
+      "title": "大学物理B(2)",
+      "credits": 4,
+      "department": "物理系",
+      "tag": "专业基础 · 热门课程",
+      "sleep": 2,
+      "initial": false,
+      "art": "physics",
+      "required": true,
+      "category": "必修"
+    },
+    {
+      "id": "probability",
+      "title": "概率论与数理统计",
+      "credits": 3,
+      "department": "数学系",
+      "tag": "基础好课 · 学长推荐",
+      "sleep": 2,
+      "initial": false,
+      "art": "probability",
+      "required": true,
+      "category": "必修"
+    },
+    {
+      "id": "algebra",
+      "title": "线性代数",
+      "credits": 4,
+      "department": "数学系",
+      "tag": "专业基础 · 常学常新",
+      "sleep": 2,
+      "initial": false,
+      "art": "algebra",
+      "required": true,
+      "category": "必修"
+    },
+    {
+      "id": "philosophy",
+      "title": "思想道德与法治",
+      "credits": 3,
+      "department": "思政课程",
+      "tag": "通识必修 · 写作实践",
+      "sleep": 1,
+      "initial": false,
+      "art": "philosophy",
+      "required": true,
+      "category": "必修"
+    },
+    {
+      "id": "flowers",
+      "title": "花卉鉴赏",
+      "credits": 2,
+      "department": "美育课程",
+      "tag": "早八精品 · 美育好课",
+      "sleep": 1,
+      "initial": false,
+      "art": "flowers",
+      "required": false,
+      "category": "选修"
+    },
+    {
+      "id": "programming",
+      "title": "程序设计基础",
+      "credits": 3,
+      "department": "计算机系",
+      "tag": "实践好课 · 热门加购",
+      "sleep": 3,
+      "initial": false,
+      "art": "programming",
+      "required": false,
+      "category": "选修"
+    },
+    {
+      "id": "english",
+      "title": "大学英语",
+      "credits": 2,
+      "department": "外语课程",
+      "tag": "小班教学 · 限量开放",
+      "sleep": 1,
+      "initial": false,
+      "art": "english",
+      "required": false,
+      "category": "选修"
+    },
+    {
+      "id": "mechanics",
+      "title": "工程力学",
+      "credits": 4,
+      "department": "机械系",
+      "tag": "硬核好课 · 专业基础",
+      "sleep": 3,
+      "initial": false,
+      "art": "mechanics",
+      "required": false,
+      "category": "选修"
+    },
+    {
+      "id": "experiment",
+      "title": "大学物理实验",
+      "credits": 1,
+      "department": "实验课程",
+      "tag": "动手实践 · 名额紧张",
+      "sleep": 2,
+      "initial": false,
+      "art": "experiment",
+      "required": false,
+      "category": "选修"
+    }
+  ],
+  "additions": [
+    {
+      "id": "calculus",
+      "time": 0.68,
+      "flight": 0.46,
+      "batch": true
+    },
+    {
+      "id": "physics",
+      "time": 0.74,
+      "flight": 0.46,
+      "batch": true
+    },
+    {
+      "id": "probability",
+      "time": 0.8,
+      "flight": 0.46,
+      "batch": true
+    },
+    {
+      "id": "algebra",
+      "time": 0.86,
+      "flight": 0.46,
+      "batch": true
+    },
+    {
+      "id": "philosophy",
+      "time": 0.92,
+      "flight": 0.46,
+      "batch": true
+    },
+    {
+      "id": "flowers",
+      "time": 1.8,
+      "flight": 0.62
+    },
+    {
+      "id": "programming",
+      "time": 3.45,
+      "flight": 0.64
+    },
+    {
+      "id": "english",
+      "time": 4.15,
+      "flight": 0.7
+    },
+    {
+      "id": "mechanics",
+      "time": 4.45,
+      "flight": 0.7
+    },
+    {
+      "id": "experiment",
+      "time": 4.64,
+      "flight": 0.7
+    }
+  ],
+  "handoff": {
+    "wallpaper": "本段临时绘制的紫色校园锁屏，等待第三段共同版本替换",
+    "date": "10月22日 星期四",
+    "time": "19:11",
+    "end": "完全黑屏"
+  }
+}
