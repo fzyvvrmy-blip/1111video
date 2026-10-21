@@ -1,11 +1,11 @@
 {
-  "status": "v5连续人物与中文说话预览；HeyGen生成原声和动作，选取第一遍完整台词，口型细节待观看反馈",
-  "version": "v5",
+  "status": "v6男促销员声线试做；原生生成号外号外对白与同步表演，声音观感待用户试听",
+  "version": "v6",
   "presenterVideo": {
-    "file": "previews/bookseller-motion-v1.mp4",
+    "file": "previews/bookseller-motion-v2.mp4",
     "start": 6.3,
     "trimStart": 0,
-    "trimEnd": 10.2,
+    "trimEnd": 15,
     "useAudio": true
   },
   "presenterImages": {
@@ -15,7 +15,7 @@
   "width": 1080,
   "height": 2376,
   "fps": 30,
-  "duration": 16.5,
+  "duration": 21.3,
   "time": "19:11",
   "cartInitialCount": 0,
   "scenes": {
@@ -24,8 +24,8 @@
     "browseScroll": [4.4, 6.2],
     "liveWindowAppear": [6.3, 6.55],
     "liveWindowExpand": [8.05, 8.25],
-    "courseCardAppear": [14.6, 14.9],
-    "tailHold": [15.0, 16.5]
+    "courseCardAppear": [20.05, 20.35],
+    "tailHold": [20.5, 21.3]
   },
   "referenceCrops": {
     "banner": [22, 350, 804, 240],
@@ -36,9 +36,10 @@
   },
   "audio": {
     "voice": null,
-    "referenceVoice": "audio/bookseller-lipsync-driver-v1.wav",
+    "referenceVoice": null,
     "music": null,
-    "effects": "界面提示音与人物视频同步原声；保持原速，轻微喇叭滤波"
+    "effects": "界面提示音与人物视频同步原声；原速，保留低频男声共鸣，仅轻微清理极低频与高频",
+    "voiceFilter": {"highpass":80,"lowpass":7000}
   },
   "advertisements": [
     {"title":"双11 学分专场","copy":"知识好物，限时开抢！","badge":"校园好课"},

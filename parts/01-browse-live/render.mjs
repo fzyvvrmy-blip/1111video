@@ -236,7 +236,8 @@ if(!process.argv.includes('--frames-only')){
   const args=['-y','-f','rawvideo','-pixel_format','rgba','-video_size',`${W}x${H}`,'-framerate',String(S.fps),'-i','pipe:0','-i',effects];
   const voice=S.audio.voice && path.join(DIR,S.audio.voice);
   if(presenterVideo&&S.presenterVideo.useAudio){
-    args.push('-i',presenterFile,'-filter_complex',`[2:a]atrim=start=${S.presenterVideo.trimStart||0}${S.presenterVideo.trimEnd?`:end=${S.presenterVideo.trimEnd}`:''},asetpts=PTS-STARTPTS,highpass=f=250,lowpass=f=5000,alimiter=limit=0.85,adelay=${S.presenterVideo.start*1000}:all=1[voice];[1:a][voice]amix=inputs=2:duration=first:normalize=0[a]`,'-map','0:v:0','-map','[a]');
+    const voiceFilter=S.audio.voiceFilter||{highpass:250,lowpass:5000};
+    args.push('-i',presenterFile,'-filter_complex',`[2:a]atrim=start=${S.presenterVideo.trimStart||0}${S.presenterVideo.trimEnd?`:end=${S.presenterVideo.trimEnd}`:''},asetpts=PTS-STARTPTS,highpass=f=${voiceFilter.highpass},lowpass=f=${voiceFilter.lowpass},alimiter=limit=0.85,adelay=${S.presenterVideo.start*1000}:all=1[voice];[1:a][voice]amix=inputs=2:duration=first:normalize=0[a]`,'-map','0:v:0','-map','[a]');
   }else if(voice && fs.existsSync(voice)){
     const tempo=S.audio.voiceDuration/S.audio.voiceTargetDuration;
     args.push('-i',voice,'-filter_complex',`[2:a]atempo=${tempo},highpass=f=450,lowpass=f=3800,volume=1.1,alimiter=limit=0.7,adelay=${S.audio.voiceStart*1000}:all=1[voice];[1:a][voice]amix=inputs=2:duration=first:normalize=0[a]`,'-map','0:v:0','-map','[a]');
