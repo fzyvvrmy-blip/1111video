@@ -1,0 +1,6 @@
+生成方式：内置image_gen图片编辑。重新设计三十岁左右年轻面孔。
+
+Image 1 is the OLD bookseller holding a book, used ONLY as pose, clothing, prop and market composition reference. Image 2 is the NEW young bookstore owner, and is the exact face/identity authority.
+Replace the middle-aged man in image 1 with the SAME young adult Chinese male from image 2, visibly around 29–30: identical youthful face shape, eyes, eyebrows, nose, smile, dark casually tousled hair and clean-shaven skin. Do not keep any old moustache, grey beard, deep facial creases or tired middle-aged eyes.
+Preserve image 1's pose: hand holding lavender floral book titled exactly "花卉鉴赏" upright at chest height facing viewer, other hand holding white/purple megaphone near chest. Keep beige shirt, indigo apron, full outdoor flea-market bookstall, purple flags, golden daylight, table, books and exact portrait framing.
+Photorealistic, lively young small-business owner; match image 2 rather than smoothing image 1. No UI, caption or watermark.

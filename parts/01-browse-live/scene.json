@@ -1,9 +1,9 @@
 {
-  "status": "v3界面动效预览，老板形象稍微年轻化；两个静态关键画面，尚无连续口型和手势动画",
-  "version": "v3",
+  "status": "v4界面动效预览，老板重新设计为三十岁左右的年轻面孔；两个静态关键画面，尚无连续口型和手势动画",
+  "version": "v4",
   "presenterImages": {
-    "megaphone": "assets/bookseller-megaphone-v3.png",
-    "book": "assets/bookseller-book-v3.png"
+    "megaphone": "assets/bookseller-megaphone-v4.png",
+    "book": "assets/bookseller-book-v4.png"
   },
   "width": 1080,
   "height": 2376,
