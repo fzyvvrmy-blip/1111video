@@ -1,0 +1,19 @@
+{
+  "provider": "HeyGen web Creative Studio",
+  "model": "HeyGen Video",
+  "jobId": "0fde9cd3e51e49bdbda6f9797c318f54",
+  "jobUrl": "https://app.heygen.com/apps/output/0fde9cd3e51e49bdbda6f9797c318f54",
+  "status": "completed",
+  "resultUrl": "https://app.heygen.com/videos/heygen-video-0fde9cd3e51e49bdbda6f9797c318f54",
+  "savedFile": "../previews/bookseller-motion-v1.mp4",
+  "actualDimensions": [768, 1344],
+  "actualFps": 24,
+  "actualDuration": 15.166666,
+  "edit": "Use source 0–10.2 seconds. Generated source repeats the final lines after roughly 10.31 seconds; exclude that repetition. Phone composition starts the source at 6.3 seconds without changing speech speed.",
+  "duration": 15,
+  "aspectRatio": "9:16",
+  "resolution": "768p",
+  "inputs": ["bookseller-megaphone-v4.png", "bookseller-book-v4.png", "../audio/bookseller-lipsync-driver-v1.wav"],
+  "prompt": "固定镜头，竖屏直播视角，一镜到底。严格保持参考图中的同一个三十岁左右中国男性书摊老板、米色短袖、深蓝色围裙、集市书摊和紫白色喇叭。老板面对镜头热情招呼，嘴部清楚可见，中文口型逐字跟随参考音频，不能重新编台词。自然眨眼、点头、肩膀活动；空出的手从摊上拿起《花卉鉴赏》教材，举到胸前展示，书本不挡脸。倒数时微微前倾，最后说‘上链接’时向画面下方示意，随后保持自然轻微活动。准确台词：花卉鉴赏！两学分！早八精品，美育好课！看一看，挑一挑！三，二，一，上链接！不加字幕、界面、手机边框、配乐或其他说话者，不切镜，不换脸，不改变年龄。",
+  "billing": "Used one of three displayed free video generations; no purchase or subscription initiated"
+}

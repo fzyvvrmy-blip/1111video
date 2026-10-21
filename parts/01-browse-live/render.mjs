@@ -4,6 +4,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import {spawn} from 'node:child_process';
 import {once} from 'node:events';
+import {PresenterVideo} from './presenter-video.mjs';
 
 const DIR=path.dirname(fileURLToPath(import.meta.url));
 const ROOT=path.resolve(DIR,'../..');
@@ -26,6 +27,10 @@ const liveCanvas=createCanvas(1080,2376),l=liveCanvas.getContext('2d');
 const home=await loadImage(path.join(ROOT,'assets/references/home-v1.png'));
 const presenter=await loadImage(path.join(DIR,S.presenterImages?.megaphone || 'assets/bookseller-megaphone.png'));
 const presenterBook=await loadImage(path.join(DIR,S.presenterImages?.book || 'assets/bookseller-book.png'));
+const presenterFile=S.presenterVideo?.file&&path.join(DIR,S.presenterVideo.file);
+if(presenterFile&&!fs.existsSync(presenterFile))throw Error('Configured presenter clip is missing: '+presenterFile);
+const presenterVideo=presenterFile?new PresenterVideo({file:presenterFile,ffmpeg:process.env.FFMPEG_PATH||'ffmpeg',fps:S.fps,createCanvas,ImageData:canvasLib.ImageData}):null;
+let presenterFrame=null;
 const purple='#660099',ink='#171525',muted='#858398';
 const clamp=(x)=>Math.max(0,Math.min(1,x));
 const ease=(x)=>{x=clamp(x);return x*x*(3-2*x);};
@@ -78,7 +83,7 @@ function navigation(ctx,active=0){
   rr(ctx,0,2118,1080,258,0,'#fff');line(ctx,[[0,2118],[1080,2118]],'#e8e7ee',2);
   const labels=['首页','直播','消息','选课车','我的课表'],types=['home','live','message','cart','profile'];
   for(let i=0;i<5;i++){const x=108+i*216,color=i===active?purple:ink;icon(ctx,types[i],x,2174,color,64);text(ctx,labels[i],x,2246,31,color,i===active,'center');
-    if(i===2||i===3){rr(ctx,x+15,2125,55,44,23,purple);text(ctx,i===2?'29':String(S.cartInitialCount),x+42,2147,28,'#fff',true,'center');}
+    if(i===2||(i===3&&S.cartInitialCount>0)){rr(ctx,x+15,2125,55,44,23,purple);text(ctx,i===2?'29':String(S.cartInitialCount),x+42,2147,28,'#fff',true,'center');}
   }
   line(ctx,[[260,2318],[285,2318]],'#999',3);line(ctx,[[260,2327],[285,2327]],'#999',3);rr(ctx,525,2308,29,29,8,null,'#999',3);line(ctx,[[822,2308],[800,2324],[822,2339],[822,2308]],'#999',3);
 }
@@ -140,8 +145,8 @@ function homePage(t){
 function livePage(t){
   l.clearRect(0,0,1080,2376);
   l.fillStyle='#27222e';l.fillRect(0,0,1080,2376);
-  // Two matched still keyframes; no claim of continuous body motion or lip sync.
-  l.save();l.beginPath();l.rect(0,95,1080,2023);l.clip();cover(l,t<12.1?presenter:presenterBook,0,95,1080,2023,1+0.004*Math.sin(t/6));l.restore();
+  // A configured video uses the same decoded frame in both live layouts.
+  l.save();l.beginPath();l.rect(0,95,1080,2023);l.clip();cover(l,presenterFrame||(t<12.1?presenter:presenterBook),0,95,1080,2023,presenterFrame?1:1+0.004*Math.sin(t/6));l.restore();
   const shade=l.createLinearGradient(0,0,0,650);shade.addColorStop(0,'rgba(10,6,18,.65)');shade.addColorStop(1,'rgba(10,6,18,0)');l.fillStyle=shade;l.fillRect(0,0,1080,650);
   status(l,true);
   rr(l,30,128,580,94,47,'rgba(0,0,0,.27)');l.save();l.beginPath();l.arc(80,175,40,0,Math.PI*2);l.clip();l.drawImage(presenter,250,220,420,420,40,135,80,80);l.restore();
@@ -178,7 +183,7 @@ function floatingLive(t){
   c.shadowColor='rgba(49,8,69,.25)';c.shadowBlur=32;c.shadowOffsetY=12;rr(c,x,y,w,h,r,'#201c27');c.shadowColor='transparent';
   c.beginPath();c.roundRect(x,y,w,h,r);c.clip();
   // Same source frame is present in the small window and the expanded live view.
-  if(pop===0)cover(c,presenter,x,y,w,h-38);
+  if(pop===0)cover(c,presenterFrame||presenter,x,y,w,h-38);
   else c.drawImage(liveCanvas,0,lerp(350,0,clamp(expanded)),1080,lerp(1500,2376,clamp(expanded)),x,y,w,h);
   if(pop<.5){c.save();c.globalAlpha=1-pop*2;
     rr(c,x,y+h-46,w,46,0,'rgba(102,0,153,.95)');
@@ -202,7 +207,8 @@ function touch(t){
   const p=(t-7.85)/.2;if(p<0||p>1)return;
   c.save();c.globalAlpha=Math.sin(Math.PI*p)*.7;c.strokeStyle='#fff';c.lineWidth=4;c.beginPath();c.arc(905,410,12+17*p,0,Math.PI*2);c.stroke();c.restore();
 }
-function render(t){
+async function render(t){
+  if(presenterVideo){const sourceTime=Math.max(0,t-S.presenterVideo.start)+(S.presenterVideo.trimStart||0);presenterFrame=await presenterVideo.frame(Math.min(sourceTime,(S.presenterVideo.trimEnd||Infinity)-1/S.fps));}
   c.resetTransform();c.clearRect(0,0,W,H);c.scale(SCALE,SCALE);
   const sceneT=Math.min(t,S.scenes.tailHold[0]);
   homePage(sceneT);livePage(sceneT);floatingLive(sceneT);touch(sceneT);opening(sceneT);
@@ -212,13 +218,14 @@ function render(t){
 const courseFeed=createCanvas(1080,Math.ceil(S.courses.length/2)*670);
 const feedCtx=courseFeed.getContext('2d');
 for(let i=0;i<S.courses.length;i++){const row=Math.floor(i/2),item=S.courses[i];course(feedCtx,item.key,item.title,item.credits,item.tag,i%2?562:20,row*670);}
-const marks=[0.8,2.4,3.1,3.95,4.8,6.2,7.6,7.98,8.15,8.35,11.2,13.1,15.8,18.45];
-for(const t of marks){render(t);fs.writeFileSync(path.join(OUT,`frame-${t.toFixed(2)}.png`),canvas.toBuffer('image/png'));}
-render(S.duration-1/S.fps);fs.writeFileSync(path.join(DIR,'live-card-end.png'),canvas.toBuffer('image/png'));
+const marks=[...new Set([0.8,2.4,3.1,3.95,4.8,6.2,7.6,7.98,8.15,8.35,11.2,13.1,15.8,S.duration-.05].filter(t=>t<S.duration))].sort((a,b)=>a-b);
+for(const t of marks){await render(t);fs.writeFileSync(path.join(OUT,`frame-${t.toFixed(2)}.png`),canvas.toBuffer('image/png'));}
+await render(S.duration-1/S.fps);fs.writeFileSync(path.join(DIR,'live-card-end.png'),canvas.toBuffer('image/png'));
+presenterVideo?.close();
 
 function writeAudio(filename){
   const rate=48000,count=Math.ceil(S.duration*rate);const pcm=Buffer.alloc(count*2);
-  const events=[{t:6.3,d:.16,f:660,g:.10},{t:7.94,d:.07,f:900,g:.11},{t:8.08,d:.12,f:620,g:.07},{t:14.1,d:.22,f:600,g:.09}];
+  const events=[{t:6.3,d:.16,f:660,g:.10},{t:7.94,d:.07,f:900,g:.11},{t:8.08,d:.12,f:620,g:.07},{t:S.scenes.courseCardAppear[0],d:.22,f:600,g:.09}];
   for(let i=0;i<count;i++){const t=i/rate;let v=0;for(const e of events){const z=t-e.t;if(z>=0&&z<e.d){const env=Math.pow(Math.sin(Math.PI*z/e.d),2)*Math.exp(-9*z);v+=Math.sin(2*Math.PI*e.f*z)*env*e.g;}}pcm.writeInt16LE(Math.max(-32767,Math.min(32767,Math.round(v*32767))),i*2);}
   const hdr=Buffer.alloc(44);hdr.write('RIFF');hdr.writeUInt32LE(36+pcm.length,4);hdr.write('WAVE',8);hdr.write('fmt ',12);hdr.writeUInt32LE(16,16);hdr.writeUInt16LE(1,20);hdr.writeUInt16LE(1,22);hdr.writeUInt32LE(rate,24);hdr.writeUInt32LE(rate*2,28);hdr.writeUInt16LE(2,32);hdr.writeUInt16LE(16,34);hdr.write('data',36);hdr.writeUInt32LE(pcm.length,40);fs.writeFileSync(filename,Buffer.concat([hdr,pcm]));
 }
@@ -228,7 +235,9 @@ if(!process.argv.includes('--frames-only')){
   const file=path.join(OUT,`part-01-interface-preview-${S.version}${SCALE===1?'':'-half'}.mp4`);
   const args=['-y','-f','rawvideo','-pixel_format','rgba','-video_size',`${W}x${H}`,'-framerate',String(S.fps),'-i','pipe:0','-i',effects];
   const voice=S.audio.voice && path.join(DIR,S.audio.voice);
-  if(voice && fs.existsSync(voice)){
+  if(presenterVideo&&S.presenterVideo.useAudio){
+    args.push('-i',presenterFile,'-filter_complex',`[2:a]atrim=start=${S.presenterVideo.trimStart||0}${S.presenterVideo.trimEnd?`:end=${S.presenterVideo.trimEnd}`:''},asetpts=PTS-STARTPTS,highpass=f=250,lowpass=f=5000,alimiter=limit=0.85,adelay=${S.presenterVideo.start*1000}:all=1[voice];[1:a][voice]amix=inputs=2:duration=first:normalize=0[a]`,'-map','0:v:0','-map','[a]');
+  }else if(voice && fs.existsSync(voice)){
     const tempo=S.audio.voiceDuration/S.audio.voiceTargetDuration;
     args.push('-i',voice,'-filter_complex',`[2:a]atempo=${tempo},highpass=f=450,lowpass=f=3800,volume=1.1,alimiter=limit=0.7,adelay=${S.audio.voiceStart*1000}:all=1[voice];[1:a][voice]amix=inputs=2:duration=first:normalize=0[a]`,'-map','0:v:0','-map','[a]');
   }
@@ -237,12 +246,12 @@ if(!process.argv.includes('--frames-only')){
   let pipeError;proc.stdin.on('error',e=>{pipeError=e;});
   const total=Math.round(S.duration*S.fps);
   for(let frame=0;frame<total;frame++){
-    render(frame/S.fps);
+    await render(frame/S.fps);
     const data=Buffer.from(c.getImageData(0,0,W,H).data);
     if(pipeError)throw pipeError;
     if(!proc.stdin.write(data))await once(proc.stdin,'drain');
     if(frame%90===0)console.log(`Rendered ${frame}/${total}`);
   }
-  proc.stdin.end();const [code]=await once(proc,'close');if(code!==0)throw Error(tail);console.log(`Saved ${file}`);
+  proc.stdin.end();const [code]=await once(proc,'close');presenterVideo?.close();if(code!==0)throw Error(tail);console.log(`Saved ${file}`);
 }
 console.log('Key frames and handoff frame saved.');

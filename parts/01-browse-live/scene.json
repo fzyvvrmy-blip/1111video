@@ -1,6 +1,13 @@
 {
-  "status": "v4界面动效预览，老板重新设计为三十岁左右的年轻面孔；两个静态关键画面，尚无连续口型和手势动画",
-  "version": "v4",
+  "status": "v5连续人物与中文说话预览；HeyGen生成原声和动作，选取第一遍完整台词，口型细节待观看反馈",
+  "version": "v5",
+  "presenterVideo": {
+    "file": "previews/bookseller-motion-v1.mp4",
+    "start": 6.3,
+    "trimStart": 0,
+    "trimEnd": 10.2,
+    "useAudio": true
+  },
   "presenterImages": {
     "megaphone": "assets/bookseller-megaphone-v4.png",
     "book": "assets/bookseller-book-v4.png"
@@ -8,17 +15,17 @@
   "width": 1080,
   "height": 2376,
   "fps": 30,
-  "duration": 18.5,
+  "duration": 16.5,
   "time": "19:11",
-  "cartInitialCount": 5,
+  "cartInitialCount": 0,
   "scenes": {
     "openingFade": [0, 0.4],
     "openingToHome": [1.1, 2.2],
     "browseScroll": [4.4, 6.2],
     "liveWindowAppear": [6.3, 6.55],
     "liveWindowExpand": [8.05, 8.25],
-    "courseCardAppear": [14.1, 14.5],
-    "tailHold": [16.5, 18.5]
+    "courseCardAppear": [14.6, 14.9],
+    "tailHold": [15.0, 16.5]
   },
   "referenceCrops": {
     "banner": [22, 350, 804, 240],
@@ -28,12 +35,10 @@
     "flowers": [435, 1265, 385, 225]
   },
   "audio": {
-    "voice": "audio/bookseller-voice-temp.wav",
-    "voiceDuration": 9.254785,
-    "voiceStart": 7.0,
-    "voiceTargetDuration": 7.5,
+    "voice": null,
+    "referenceVoice": "audio/bookseller-lipsync-driver-v1.wav",
     "music": null,
-    "effects": "界面提示音，喇叭配音如本机可用则另行合成临时音轨"
+    "effects": "界面提示音与人物视频同步原声；保持原速，轻微喇叭滤波"
   },
   "advertisements": [
     {"title":"双11 学分专场","copy":"知识好物，限时开抢！","badge":"校园好课"},
@@ -50,7 +55,7 @@
     {"key":"physics","title":"大学物理B(2)","credits":4,"tag":"专业基础 · 热门课程"},
     {"key":"shooting","title":"三年级女生射击","credits":1,"tag":"限量开放 · 库存紧张"},
     {"key":"flowers","title":"花卉鉴赏","credits":2,"tag":"早八精品 · 美育好课"},
-    {"key":"algebra","title":"线性代数","credits":3,"tag":"基础必备"},
+    {"key":"algebra","title":"线性代数","credits":4,"tag":"基础必备"},
     {"key":"probability","title":"概率论与数理统计","credits":3,"tag":"统计入门"},
     {"key":"coding","title":"程序设计基础","credits":3,"tag":"实践课程"},
     {"key":"art","title":"艺术导论","credits":2,"tag":"美育专区"},
