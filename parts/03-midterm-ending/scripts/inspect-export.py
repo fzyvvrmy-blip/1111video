@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Inspect the real v2 exports and save decoded review frames and a QA record."""
+"""Inspect the selected exports and save decoded review frames and a QA record."""
 
+import argparse
 import array
 import io
 import json
@@ -11,8 +12,6 @@ import wave
 from PIL import Image, ImageChops, ImageDraw
 
 PART = Path(__file__).resolve().parents[1]
-OUT = PART / "renders/part03-animation-v2"
-KEYS = PART / "keyframes/animation-v2"
 
 
 def probe(path):
@@ -36,6 +35,11 @@ def is_black(image):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--config", default="source/animation-v3.json", help="相对于本段目录的配置文件")
+    config = json.loads((PART / parser.parse_args().config).read_text())
+    OUT = PART / "renders" / config["version"]
+    KEYS = PART / "keyframes" / config["version"].removeprefix("part03-")
     video = OUT / "part03-draft-1080x2376.mp4"
     preview = OUT / "part03-preview-540p.mp4"
     metadata = {}
@@ -81,9 +85,10 @@ def main():
         x, y = i % 3 * 360, i // 3 * 822
         sheet.paste(frames[name].resize((360, 792)), (x, y))
         draw.text((x + 10, y + 799), name, fill="#22162f")
-    sheet.save(KEYS / "review-encoded-v2.jpg", quality=92)
+    revision = config["version"].rsplit("-", 1)[-1]
+    sheet.save(KEYS / f"review-encoded-{revision}.jpg", quality=92)
 
-    qa = {"exports": metadata, "completeDecode": True, "blackStartEnd": True,
+    qa = {"version": config["version"], "exports": metadata, "completeDecode": True, "blackStartEnd": True,
           "audioPeaks": peaks, "lockscreenDateOnlyChangeBBox": bbox,
           "checkedEncodedFrames": dict(samples), "fontActual": "Noto Sans CJK SC",
           "ledger": json.loads((OUT / "receipt-ledger.json").read_text())}

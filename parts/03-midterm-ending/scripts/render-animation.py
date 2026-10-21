@@ -195,21 +195,32 @@ class Renderer:
         paint(ctx, self.icon_cache[key], x=x, y=y)
 
     def notification(self, ctx, order, y, opacity=1, pf=False, press=0):
+        large = pf and self.config.get("largeNotices", False)
+        height = 360 if large else (216 if pf else 198)
+        left, width, radius = (40, 1000, 36) if large else (64, 952, 30)
         ctx.save()
         ctx.push_group()
-        ctx.translate(540, y + 108)
+        ctx.translate(540, y + height / 2)
         ctx.scale(1 - 0.015 * press, 1 - 0.015 * press)
-        ctx.translate(-540, -(y + 108))
-        box(ctx, 64, y + 5, 952, 216 if pf else 198, "#3E2359", 30, 0.07)
-        box(ctx, 64, y, 952, 216 if pf else 198, "#FFFFFF", 30, 0.95)
-        box(ctx, 90, y + 25, 38, 38, PURPLE, 10)
-        self.icon(ctx, "order", 97, y + 31, 24, "#FFFFFF")
-        self.text(ctx, "教务处" if pf else "学分专场", 145, y + 25, 26, MUTED)
-        self.text(ctx, "现在", 981, y + 27, 24, MUTED, align="right")
-        if pf:
+        ctx.translate(-540, -(y + height / 2))
+        box(ctx, left, y + 5, width, height, "#3E2359", radius, 0.07)
+        box(ctx, left, y, width, height, "#FFFFFF", radius, 0.95)
+        if large:
+            box(ctx, 76, y + 30, 52, 52, PURPLE, 13)
+            self.icon(ctx, "order", 86, y + 40, 32, "#FFFFFF")
+            self.text(ctx, "教务处", 152, y + 28, 34, MUTED)
+            self.text(ctx, "现在", 1004, y + 30, 30, MUTED, align="right")
+            self.text(ctx, "距离本学期P/F申请截止", 80, y + 109, 48, bold=True)
+            self.text(ctx, f"还有{self.config['pfDays']}天。", 80, y + 198, 88, PURPLE, bold=True)
+        else:
+            box(ctx, 90, y + 25, 38, 38, PURPLE, 10)
+            self.icon(ctx, "order", 97, y + 31, 24, "#FFFFFF")
+            self.text(ctx, "教务处" if pf else "学分专场", 145, y + 25, 26, MUTED)
+            self.text(ctx, "现在", 981, y + 27, 24, MUTED, align="right")
+        if pf and not large:
             self.text(ctx, "距离本学期P/F申请截止", 96, y + 83, 37, bold=True)
             self.text(ctx, f"还有{self.config['pfDays']}天。", 96, y + 139, 42, PURPLE, bold=True)
-        else:
+        elif not pf:
             self.text(ctx, "您有新的课程订单待签收。", 96, y + 76, 33, bold=True)
             self.text(ctx, order["title"] + " · " + order["detail"], 96, y + 132, 28, MUTED, width=882)
         ctx.pop_group_to_source()
@@ -333,16 +344,28 @@ class Renderer:
         box(ctx, 0, 0, W, H, "#190B28", 0, 0.43)
         scale = 0.94 + 0.06 * ease(amount)
         ctx.translate(540, 1140); ctx.scale(scale, scale); ctx.translate(-540, -1140)
-        box(ctx, 116, 863, 848, 575 if policy else 507, "#FFFFFF", 40)
-        box(ctx, 488, 917, 104, 104, "#F2E7FB", 52)
-        self.text(ctx, "!", 540, 914, 65, PURPLE, True, "center")
-        self.text(ctx, title, 540, 1046, 47, INK, True, "center")
-        self.text(ctx, message, 540, 1125, 32, MUTED, align="center")
-        if policy:
-            self.text(ctx, policy, 540, 1190, 29, MUTED, align="center")
-        button_y = 1300 if policy else 1232
-        box(ctx, 180, button_y, 720, 85, PURPLE, 42)
-        self.text(ctx, button, 540, button_y + 16, 33, "#FFFFFF", align="center")
+        if self.config.get("largeNotices", False):
+            box(ctx, 72, 804, 936, 692, "#FFFFFF", 44)
+            box(ctx, 480, 858, 120, 120, "#F2E7FB", 60)
+            self.text(ctx, "!", 540, 852, 76, PURPLE, True, "center")
+            self.text(ctx, title, 540, 1008, 64, INK, True, "center")
+            for index, line in enumerate(message.splitlines()):
+                self.text(ctx, line, 540, 1115 + index * 87, 48, INK, True, "center")
+            if policy:
+                self.text(ctx, policy, 540, 1202, 42, MUTED, align="center")
+            box(ctx, 140, 1330, 800, 100, PURPLE, 44)
+            self.text(ctx, button, 540, 1347, 40, "#FFFFFF", align="center")
+        else:
+            box(ctx, 116, 863, 848, 575 if policy else 507, "#FFFFFF", 40)
+            box(ctx, 488, 917, 104, 104, "#F2E7FB", 52)
+            self.text(ctx, "!", 540, 914, 65, PURPLE, True, "center")
+            self.text(ctx, title, 540, 1046, 47, INK, True, "center")
+            self.text(ctx, message, 540, 1125, 32, MUTED, align="center")
+            if policy:
+                self.text(ctx, policy, 540, 1190, 29, MUTED, align="center")
+            button_y = 1300 if policy else 1232
+            box(ctx, 180, button_y, 720, 85, PURPLE, 42)
+            self.text(ctx, button, 540, button_y + 16, 33, "#FFFFFF", align="center")
         ctx.pop_group_to_source(); ctx.paint_with_alpha(amount); ctx.restore()
 
     def app_scene(self, ctx, t):
@@ -365,7 +388,10 @@ class Renderer:
             a = min(fade(t, 14.78, 14.98), 1 - fade(t, 16.22, 16.45))
             remaining = receipt_state(self.config, len(SIGNS))["sleep"]
             required = self.config["orders"][4]["sleepCost"]
-            self.popup(ctx, "余额不足", f"需睡眠{required}小时，当前仅剩{remaining}小时。", "返回订单", a)
+            message = f"需睡眠{required}小时，当前仅剩{remaining}小时。"
+            if self.config.get("largeNotices", False):
+                message = f"需睡眠{required}小时，\n当前仅剩{remaining}小时。"
+            self.popup(ctx, "余额不足", message, "返回订单", a)
         if t >= 16.96:
             self.popup(ctx, "申请失败", "已超过退课时间。", "知道了", fade(t, 16.96, 17.18),
                        policy="该商品一经选修，概不退换。")
@@ -373,7 +399,7 @@ class Renderer:
             y = 642 + index * 344 - self.scroll_position(start) + 258
             self.touch(ctx, t, start, 903, y)
         self.touch(ctx, t, FAIL, 903, 900)
-        self.touch(ctx, t, 16.25, 540, 1274)
+        self.touch(ctx, t, 16.25, 540, 1380 if self.config.get("largeNotices", False) else 1274)
         self.touch(ctx, t, 16.7, 702, 900)
 
     def draw(self, t, scale=1):
@@ -457,17 +483,20 @@ def make_audio(out, duration):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--config", default="source/animation-v3.json", help="相对于本段目录的配置文件")
     parser.add_argument("--preview", action="store_true", help="只渲染540×1188的节奏预览")
     parser.add_argument("--stills-only", action="store_true", help="只导出关键静帧")
     args = parser.parse_args()
-    config = json.loads((PART / "source/animation-v2.json").read_text())
+    config_path = PART / args.config
+    config = json.loads(config_path.read_text())
     ledger = validate_config(config)
-    subprocess.run(["python3", str(PART / "scripts/render-lockscreen-v2.py")], check=True)
+    subprocess.run(["python3", str(PART / "scripts/render-lockscreen-v2.py"),
+                    "--config", str(config_path)], check=True)
     out = PART / "renders" / config["version"]
     out.mkdir(parents=True, exist_ok=True)
     (out / "receipt-ledger.json").write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(ledger, ensure_ascii=False), flush=True)
-    keyframes = PART / "keyframes" / "animation-v2"
+    keyframes = PART / "keyframes" / config["version"].removeprefix("part03-")
     keyframes.mkdir(parents=True, exist_ok=True)
     renderer = Renderer(config)
     renderer.november.write_to_png(str(keyframes / "lockscreen-nov02.png"))

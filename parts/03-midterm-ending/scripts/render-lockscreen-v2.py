@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Render the part-two campus lock-screen design inside part three only."""
 
+import argparse
 import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
@@ -25,7 +26,10 @@ def render(source, destination):
 
 
 def main():
-    config = json.loads((PART / "source/animation-v2.json").read_text())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--config", default="source/animation-v3.json", help="相对于本段目录的配置文件")
+    args = parser.parse_args()
+    config = json.loads((PART / args.config).read_text())
     for suffix, date, weekday, week in (
         ("oct22", "10月22日", "星期四", config["returnWeekLabel"]),
         ("nov02", "11月2日", "星期一", config["weekLabel"]),
