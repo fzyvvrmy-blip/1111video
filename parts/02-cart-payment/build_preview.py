@@ -31,6 +31,7 @@ def crop_reference(name, box, size):
 
 def vector_cover(title, subtitle, kind):
     colors = {
+        'electronics': ('#c8bddb', '#efebf5'),
         'programming': ('#291743', '#7a4baf'),
         'english': ('#b0b4d9', '#e3dcec'),
         'mechanics': ('#c4b5d7', '#eddfec'),
@@ -40,7 +41,9 @@ def vector_cover(title, subtitle, kind):
         'philosophy': ('#9c78b9', '#dfc9e9'),
     }
     a, b = colors[kind]
-    if kind == 'programming':
+    if kind == 'electronics':
+        art = '<g fill="none" stroke="#73538f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M80 85h80m80 0h180v145H80V85m80 0v-25h80v50h-80V85m110 0v62m0 32v51m-30-83h60m-60 32h60"/><circle cx="80" cy="160" r="29" fill="#efebf5"/><path d="M62 160q9-22 18 0t18 0M374 115v85m-14-68h28m-28 30h28m-28 30h28"/></g>'
+    elif kind == 'programming':
         art = '<rect x="45" y="38" width="410" height="218" rx="13" fill="#20152f" stroke="#b093cf"/><circle cx="67" cy="56" r="4" fill="#b99cd7"/><circle cx="82" cy="56" r="4" fill="#7a568f"/><circle cx="97" cy="56" r="4" fill="#7a568f"/><text x="80" y="170" font-size="87" fill="#e8d6fa" font-family="Consolas,monospace">&lt;/&gt;</text><path d="M295 102h100M295 128h74M295 154h94M295 180h61" stroke="#b796d3" stroke-width="8" stroke-linecap="round"/><text x="77" y="218" fill="#ac86c9" font-size="19" font-family="Consolas,monospace">hello, world.</text>'
     elif kind == 'english':
         art = '<path d="M64 74Q153 36 250 83Q347 36 436 74V240Q344 204 250 249Q154 204 64 240Z" fill="#fffbff" stroke="#8e79ab" stroke-width="3"/><path d="M250 83V249" stroke="#b8a3ca" stroke-width="3"/><text x="102" y="152" font-size="51" fill="#76618f" font-family="Georgia,serif">Aa</text><path d="M290 109h100M290 135h100M290 161h78M104 182h103M104 202h83M290 187h100M290 208h70" stroke="#cbbdd8" stroke-width="6"/>'

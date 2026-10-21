@@ -1,5 +1,5 @@
 {
-  "version": "preview-v4",
+  "version": "preview-v6",
   "status": "预览数据，未写入共同清单；待与第一、三段确认",
   "duration": 28,
   "width": 1080,
@@ -127,6 +127,18 @@
       "art": "experiment",
       "required": false,
       "category": "选修"
+    },
+    {
+      "id": "electronics",
+      "title": "电工与电子技术",
+      "credits": 4,
+      "department": "电工课程",
+      "tag": "专业课程",
+      "sleep": 2,
+      "initial": false,
+      "art": "electronics",
+      "required": false,
+      "category": "选修"
     }
   ],
   "additions": [
@@ -183,6 +195,11 @@
     {
       "id": "experiment",
       "time": 4.64,
+      "flight": 0.7
+    },
+    {
+      "id": "electronics",
+      "time": 4.85,
       "flight": 0.7
     }
   ],

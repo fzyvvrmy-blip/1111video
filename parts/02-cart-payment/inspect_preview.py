@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
-KEYS = [('01-list', 0), ('02-rush', 4.73), ('03-ten-courses', 5.65), ('04-cart', 7.75), ('05-cost', 14.05), ('06-deferred', 15.80), ('07-success', 20.10), ('08-lockscreen', 24.25), ('09-black', 27.2)]
+KEYS = [('01-list', 0), ('02-rush', 4.73), ('03-courses', 5.65), ('04-cart', 7.75), ('05-cost', 14.05), ('06-deferred', 15.80), ('07-success', 20.10), ('08-lockscreen', 24.25), ('09-black', 27.2)]
 
 
 def main():
@@ -46,7 +46,8 @@ def main():
         sheet.paste(image, (x, y))
         draw.text((x, y + thumb_h + 6), f'{name}  /  {t:.2f}s', font=font, fill='#4e3f5d')
         checked.append({'frame': name, 'time': t, 'mean': round(float(np.mean(frame)), 2)})
-    transitions = [('05-cost', 14.05, '18 hours'), ('10-transfer', 14.75, 'Move below'), ('11-countdown', 15.20, '18 to 0'), ('06-deferred', 15.80, '0 now / 18 on receipt')]
+    sleep = sum(c['sleep'] for c in config['courses'])
+    transitions = [('05-cost', 14.05, f'{sleep} hours'), ('10-transfer', 14.75, 'Move below'), ('11-countdown', 15.20, f'{sleep} to 0'), ('06-deferred', 15.80, f'0 now / {sleep} on receipt')]
     strip = Image.new('RGB', (1360, 520), '#eae6ef')
     strip_draw = ImageDraw.Draw(strip)
     for i, (name, t, label) in enumerate(transitions):
@@ -66,7 +67,7 @@ def main():
     sheet.save(overview, quality=95)
     mobile = Image.new('RGB', (588, 1268), '#eae6ef')
     mobile_draw = ImageDraw.Draw(mobile)
-    mobile_keys = [('01-list', 'Larger primary button'), ('05-cost', 'Payment / 18 hours'), ('06-deferred', '0 now / 18 on receipt'), ('07-success', 'Midterm delivery')]
+    mobile_keys = [('01-list', 'Course list'), ('05-cost', f'Payment / {sleep} hours'), ('06-deferred', f'0 now / {sleep} on receipt'), ('07-success', 'Midterm delivery')]
     for i, (name, label) in enumerate(mobile_keys):
         frame = Image.open(key_dir / (name + '-encoded.jpg')).convert('RGB')
         frame = frame.resize((270, 594), Image.Resampling.LANCZOS)
