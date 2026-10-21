@@ -1,15 +1,16 @@
 # 第一段交付记录
 
 - 负责人：仓库所有者，负责第一部分
-- 状态：界面动效预览；主播动态、口型、手势和配音未完成
-- 版本：interface-preview-v1
-- 视频文件：exports/part-01-interface-preview-v1.mp4（本机导出，未发布共享链接）
+- 状态：v2界面动效预览；临时合成配音，老板使用两个静态关键画面，无连续动作/口型
+- 版本：interface-preview-v2
+- 视频文件：previews/part-01-interface-preview-v2.mp4（随工程同步GitHub）；v1保留对照
 - 规格：1080×2376，30fps，18.5秒
-- 可编辑源文件：render.mjs、scene.json、assets/presenter-static.png
+- 可编辑源文件：render.mjs、scene.json、make-voice.ps1、assets/bookseller-*.png、audio/bookseller-voice-temp.wav
 - 启动或渲染方式：见本目录README.md
 - 首尾帧：exports/frame-0.80.png与live-card-end.png；当前尾帧属于预览版，确认后再同步共同handoff目录
-- 声音与音轨说明：仅合成界面提示音，无配音和背景音乐
+- 声音与音轨说明：临时Windows康康合成声音，7秒处进入并处理为喇叭质感；保留界面提示音，无背景音乐
 - 交接：课程卡出现并停稳；第二段直接从商品列表开始，不做点击卡片动画
 - 共同状态：花卉鉴赏2学分、早八精品，选课车角标5，19:11
-- 待完成：真实主播动态素材与台词配音，手势同步，最终交接图与节奏复核
+- 本轮修改：三张横滑广告、12门课程与快速上划、底部紫色直播竖条、小窗先压后快速弹满、集市老板双画面及临时喇叭配音
+- 待完成：老板连续动态与口型、正式配音和手势同步；新增课程学分待确认
 - 已核对：555帧，H.264视频与AAC音轨，18.5秒；完整解码及实际编码关键帧检查

@@ -32,3 +32,7 @@ tmp/
 *.aac
 *.zip
 *.7z
+
+# User-requested reviewable exports; editable projects and source assets stay tracked
+!parts/**/previews/*.mp4
+!parts/**/audio/*.wav
