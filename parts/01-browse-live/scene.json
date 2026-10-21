@@ -1,6 +1,10 @@
 {
-  "status": "v2界面动效预览，集市书摊老板为两个静态关键画面，尚无连续口型和手势动画",
-  "version": "v2",
+  "status": "v3界面动效预览，老板形象稍微年轻化；两个静态关键画面，尚无连续口型和手势动画",
+  "version": "v3",
+  "presenterImages": {
+    "megaphone": "assets/bookseller-megaphone-v3.png",
+    "book": "assets/bookseller-book-v3.png"
+  },
   "width": 1080,
   "height": 2376,
   "fps": 30,
