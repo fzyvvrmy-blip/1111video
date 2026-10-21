@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2376" viewBox="0 0 1080 2376">
+  <title>第三段v2锁屏：沿用第二段v4紫色校门布局</title>
+  <desc>日期与周次由配置重建。未替换公共交接图。两次亮屏复用同一壁纸、时钟和电量。</desc>
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2=".35" y2="1">
+      <stop stop-color="#52416c"/><stop offset=".7" stop-color="#4e226f"/><stop offset="1" stop-color="#241332"/>
+    </linearGradient>
+    <radialGradient id="light" cx=".78" cy=".15" r=".7">
+      <stop stop-color="#bb9fe6"/><stop offset=".72" stop-color="#bb9fe6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow" cx=".2" cy=".65" r=".72">
+      <stop stop-color="#9559b8"/><stop offset=".8" stop-color="#9559b8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="wallpaper">
+    <rect width="1080" height="2376" fill="url(#base)"/>
+    <rect width="1080" height="2376" fill="url(#light)"/>
+    <rect width="1080" height="2376" fill="url(#glow)"/>
+    <g fill="none" stroke="#d3b8ed" stroke-opacity=".08" stroke-width="2">
+      <circle cx="410" cy="1630" r="650"/><circle cx="850" cy="1250" r="450"/>
+    </g>
+    <!-- 校门路径、颜色和比例来自第二段v4，保留矢量源。 -->
+    <g transform="translate(-100 1272) scale(2)" fill="none" stroke="#e2c9ee" stroke-width="3" opacity=".43">
+      <path d="M0 404H640M28 393H612M60 375H580M84 141L320 38L556 141L535 158H105Z"/>
+      <path d="M120 145V350H160V145M480 145V350H520V145M230 145V350H265V145M375 145V350H410V145M108 350H171V370H108ZM218 350H277V370H218ZM363 350H422V370H363ZM468 350H531V370H468Z"/>
+      <path d="M144 128H496M165 107H475M192 86H448M160 199H230M410 199H480M265 178H375M277 350V248C277 189 363 189 363 248V350M100 145H540M172 230H217V315H172ZM423 230H468V315H423Z"/>
+      <path d="M284 122H356M291 103H349M300 84H340" stroke-width="7"/>
+      <path d="M295 286H345M295 298H345M295 310H345" opacity=".4"/>
+    </g>
+  </g>
+  <g fill="#fff" opacity=".86" font-family="Microsoft YaHei, Noto Sans CJK SC" font-size="28">
+    <text x="56" y="76">中国移动</text><text x="1024" y="76" text-anchor="end">5G　▰ 53%</text>
+  </g>
+  <g transform="translate(515 220)" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="20" width="30" height="24" rx="6"/><path d="M16 20V14a9 9 0 0 1 18 0v6M25 29v6"/>
+  </g>
+  <text id="clock" x="540" y="465" fill="#fff" opacity=".8" text-anchor="middle" font-family="Microsoft YaHei, Noto Sans CJK SC" font-size="152" font-weight="600" letter-spacing="-6">19:11</text>
+  <g id="date-card" font-family="Microsoft YaHei, Noto Sans CJK SC" text-anchor="middle" fill="#fff">
+    <rect x="260" y="544" width="560" height="264" rx="38" fill="#2b104b" fill-opacity=".18" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
+    <text id="date" x="540" y="663" font-size="96" font-weight="700" letter-spacing="4">10月22日</text>
+    <text id="weekday" x="540" y="755" font-size="46" letter-spacing="8">星期四</text>
+    <text id="week" x="540" y="858" font-size="29" fill-opacity=".8">第六周</text>
+  </g>
+  <text x="540" y="2258" fill="#fff" fill-opacity=".8" text-anchor="middle" font-family="Microsoft YaHei, Noto Sans CJK SC" font-size="32" letter-spacing="4">向上滑动解锁</text>
+  <rect x="420" y="2340" width="240" height="8" rx="4" fill="#fff" fill-opacity=".53"/>
+</svg>

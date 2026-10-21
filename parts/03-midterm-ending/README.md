@@ -1,85 +1,64 @@
-# 第三段 · 期中签收与结尾
+# 第三段：期中签收与结尾
 
-已完成共同壁纸、无通知的10月22日锁屏，以及一版30秒的第三段动画初稿。初稿已实际渲染为带音效的MP4；费用、余额、P/F天数、周次及部分订单内容仍有占位，尚不作为最终交付。
+当前版本为 `part03-animation-v2`，30秒，1080×2376、30fps，带通知、点按、扣款与失败音效。按第一段v7和第二段v4调整，十门课程、31学分、18小时睡眠费用与第二段一致。当前画面中的占位已补齐；P/F还有1天，10月22日第六周、11月2日第八周。自然连贯的剧情说明见[脚本v2](脚本v2.md)。
 
-## 文件
+## 可编辑文件
 
 | 文件 | 用途 |
 | --- | --- |
-| `../../assets/handoff/lockscreen-wallpaper.png` | 1080×2376，不含UI的共同壁纸 |
-| `../../assets/handoff/lockscreen-oct22.png` | 1080×2376，19:11、10月22日星期四，无通知 |
-| `source/lockscreen-oct22.svg` | 可编辑锁屏源文件，时间、日期、状态栏、底部控件为独立组 |
-| `assets/wallpaper-generated-v1.png` | 内置 image_gen 生成的原始壁纸，846×1860，未覆盖 |
-| `source/wallpaper-prompt.md` | 完整生成提示词和素材处理记录 |
-| `scripts/render-lockscreen.py` | 本地重建两张交接PNG，不调用生成API |
-| `source/animation-v1.json` | 动画初稿的文案、占位字段、订单内容及输出参数 |
-| `scripts/render-animation.py` | 可编辑动画工程，含布局、运动、转场、声音合成和视频输出 |
-| `keyframes/animation-v1/` | 已实际生成的关键静帧，包含11月2日锁屏初稿及视频首尾黑帧 |
+| `source/animation-v2.json` | 当前文案、十门订单、睡眠/头发费用、日期、周次和视频参数 |
+| `source/part02-state-v4.json` | 第二段`ffdd1bb`的只读数据快照，供课程及费用核对 |
+| `source/ui-v2.json` | 第二段的调色板、原始SVG图标路径、字体声明和来源 |
+| `source/lockscreen-v2.svg` | 紫色校门锁屏，可编辑壁纸、日期、时钟、周次及底部控件 |
+| `scripts/render-lockscreen-v2.py` | 从SVG与当前配置重建两张本段锁屏PNG |
+| `scripts/render-animation.py` | 页面、动效、自动计算余额、音效与MP4编码 |
+| `scripts/inspect-export.py` | 实际MP4解码检查、黑帧/音轨核对与编码后审阅图 |
+| `assets/part02-v4/` | 从第二段独立HTML提取的十门封面及锁屏对照图 |
+| `keyframes/animation-v2/` | 当前关键帧；`review-encoded-v2.jpg`来自实际编码后的视频 |
 
-## 重新渲染
+课程费用、余额与角标通过同一份数据计算。睡眠余额6→5→4→3→1小时，头发余额200→180→150→120→80根，待签收10→9→8→7→6。第五次大学物理签收需2小时，失败时不扣款；返回后从同一订单申请退课。渲染前会检查与第二段快照一致、十门总费用正确、余额不为负、失败原因成立，以及日期和周次的推导。
 
-在仓库根目录执行：
+当前排版已删掉睡眠余额下方的小字。课程卡片最右侧用两行38像素加粗文字分别显示睡眠、头发费用，两行右对齐；课程名称与详情保留在左侧，和右侧费用分开。
 
-```bash
-python3 parts/03-midterm-ending/scripts/render-lockscreen.py
-```
+## 运行与渲染
 
-脚本按自身位置定位文件，源文件只使用相对路径。会重建上述两张交接PNG，不修改原始生成图。
-
-本次环境使用已有的 Python 3、ImageMagick 6（`convert`）、Fontconfig（`fc-match`）、PyGObject、PyCairo 和 librsvg 2.52。没有安装新依赖。系统依赖缺失时，可用支持SVG及中文字体的图形编辑器打开SVG，再以1080×2376导出。
-
-时间及状态栏使用 DejaVu Sans；日期、解锁提示使用 Noto Sans CJK SC。本次锁屏采用这两套字体，全片字体仍待三人统一；调整字体后须重新检查文字位置。
-
-## 动画初稿与重新渲染
-
-初稿从黑屏中的通知声开始，原壁纸亮起并显示11月2日。通知逐条进入、把先前通知向下推，顶部卡片轻压后展开为我的课程中的待签收订单。连续签收时卡片变灰、列表上移，扣款音和提示衔接起来；余额不足后从同一订单申请退课，出现失败弹窗。画面熄灭后回到原来的10月22日锁屏，只落下一张P/F提醒，最后淡去并显出结尾文字。未增加人物内心字幕。
-
-在仓库根目录执行：
+在仓库根目录执行；脚本按自身位置定位素材，不依赖当前工作目录。
 
 ```bash
-# 输出1080×2376、30fps初稿，再生成540×1188、30fps预览
+# 只重建本段的两张锁屏，不写公共handoff目录
+python3 parts/03-midterm-ending/scripts/render-lockscreen-v2.py
+
+# 导出1080×2376、30fps视频，同时生成540×1188预览
 python3 parts/03-midterm-ending/scripts/render-animation.py
 
-# 只输出小尺寸节奏预览
+# 只导出540×1188预览
 python3 parts/03-midterm-ending/scripts/render-animation.py --preview
 
 # 只检查版式，不编码视频
 python3 parts/03-midterm-ending/scripts/render-animation.py --stills-only
+
+# 重新渲染后检查两种尺寸的实际视频，导出审阅图及检查记录
+python3 parts/03-midterm-ending/scripts/inspect-export.py
 ```
 
-渲染前需已有上述两张共同PNG，缺失时先运行静帧脚本。新增动画所用依赖为本机已有的 Pango/PangoCairo、ffmpeg（libx264、AAC）；继续使用 Cairo/PyGObject 和 ImageMagick，没有新增安装依赖，也不依赖视频生成服务或配音服务。
+沿用原有Python 3、ImageMagick、Fontconfig、PyCairo、PyGObject、librsvg、Pango/PangoCairo及FFmpeg（libx264/AAC）；导出检查使用环境已有的Pillow。未安装新依赖，不需要网络或生成平台登录。头像由仓库共同参考图读取，其余新版素材都在本段目录。
 
-修改 `source/animation-v1.json` 可以调整文案、日期、P/F占位和订单内容。页面布局、缓动、片长内的动作安排在 `scripts/render-animation.py` 中。静态壁纸与日期、通知、列表、弹窗相互独立，方便继续编辑。
+前两段实际使用Microsoft YaHei；本环境缺少该字体，采用第二段声明的后备字体Noto Sans CJK SC，当前锁屏与页面均使用它。字号、颜色、线条图标、导航位置与第二段对齐；字体逐像素一致仍取决于三段是否在同一字体环境渲染。
 
-本次实际输出（均为本地文件，非团队共享链接）：
+## 实际输出
 
-- [原尺寸动画初稿](renders/part03-animation-draft-v1/part03-draft-1080x2376.mp4)：1080×2376、30fps、30秒，900帧，H.264 + AAC。
-- [小尺寸预览](renders/part03-animation-draft-v1/part03-preview-540p.mp4)：540×1188、30fps、30秒。仅作预览。
-- [通知音轨](renders/part03-animation-draft-v1/notifications.wav)：48kHz、单声道PCM，普通提示音与集中通知；由脚本原创合成。
-- [操作与扣款音轨](renders/part03-animation-draft-v1/operations.wav)：48kHz、单声道PCM，轻触、签收扣款与失败提示；由脚本原创合成。
-- [预览混音](renders/part03-animation-draft-v1/preview-mix.wav)：以上两轨合成，不含背景音乐或人声。
+- [随分支提交的原尺寸审阅视频](previews/part03-animation-v2.mp4)：与下方已检查的1080×2376导出逐字节一致，约5MB，供GitHub审阅。
+- [1080×2376视频](renders/part03-animation-v2/part03-draft-1080x2376.mp4)：30fps、30秒、900帧，H.264/AAC。
+- [540×1188预览](renders/part03-animation-v2/part03-preview-540p.mp4)：30fps，仅供预览。
+- [通知轨](renders/part03-animation-v2/notifications.wav)、[操作及扣款轨](renders/part03-animation-v2/operations.wav)、[混音](renders/part03-animation-v2/preview-mix.wav)：48kHz双声道PCM，无人声与配乐；视频使用AAC。
+- [逐单余额记录](renders/part03-animation-v2/receipt-ledger.json)、[编码检查](renders/part03-animation-v2/qa.json)。
 
-`renders/`按仓库规则被Git忽略；源文件和关键帧保留，运行脚本可重建视频及音轨。团队交接时仍需把视频和音轨上传到团队约定位置，再在DELIVERY中登记实际可访问链接。
+视频和音轨渲染目录`renders/`仍被Git忽略。本次按用户要求推送一版，在本段`previews/`中保留一份约5MB的原尺寸审阅视频，并通过本段`.gitignore`仅放行这个文件；源文件、必要素材和关键帧一并提交。独立音轨可由命令重建，团队共享音轨地址尚未登记。
 
-## 初稿占位与已核对项
+## 衔接与范围
 
-- 已核对导出为1080×2376、30fps、30秒；并从编码后的MP4抽帧查看开头、通知展开、订单滚动、余额不足、退课失败、回原日和结尾。通知进入待签收订单，底部只高亮我的课表。
-- 沿用壁纸v1、19:11、小五头像和53%电量；日期按11月2日→10月22日切换。11月2日画面明确保留“第八周【待核对】”。
-- 费用和余额均保留【X】，余额条收缩仅示意耗尽；实际逐单扣款数字和余额计算尚待接入第二人的费用表。没有向共享状态写入未经确认的数字。
-- 四类明确任务使用大纲内容。其余两条通用课程订单在配置中标为 `placeholder: true`，待替换为确认内容；六件通知是本次动画示例，不代表十门课的订单清单已经确定。
-- P/F剩余天数为【X】。三十秒为本次初稿节奏，后续与前两段合片时可调整，无平均分段时长要求。
-- 两条音轨均为实际生成的声音，样本检查无削波；音色、音量和整体节奏仍可随画面修改。背景音乐留给总剪统一加入。
+本版改用第二段v4的紫色校门风格，11月2日和回到10月22日的背景、时钟、电量、控件完全相同，仅日期、星期和周次变化。P/F提醒只出现一次，位于10月22日第六周的锁屏上。第一段主推的大学物理B(2)、4学分在本段对应失败签收订单，封面与第二段一致。
 
-## 与第二、三段的接口
+只修改`codex/part-03`里的本段目录和对应`tasks/03-期中与结尾.md`。未合并其他分支，未覆盖`shared/`、公共规范或`assets/handoff/`。第二段原工程不受影响；正式合片时需统一采用的锁屏版本、实际字体与整体时长。三段目前独立时长相加约76.1秒，仍需总剪调整。
 
-- 第二段支付后使用 `lockscreen-oct22.png`，随后熄屏至完全黑屏。
-- 第三段从该黑屏中的通知声开始；11月2日复用同一张壁纸和时钟坐标，修改日期层并加入通知卡。11月2日锁屏初稿已导出到 `keyframes/animation-v1/lockscreen-nov02-draft.png`，周次未确认，暂不登记为已定稿的共同交接图。
-- 时钟基线 `(540, 432)`，日期基线 `(540, 522)`；SVG坐标和导出像素一一对应。通知卡建议从 `y=650` 开始，横向边距沿用统一规范。
-- 第三段结尾回到同一张10月22日锁屏，再叠加一张P/F提醒；共同静帧保持无通知。
-- 静帧无帧率；动画初稿已按共同规范输出30fps。PNG与MP4分别登记，不将静帧当作视频成品。
-
-## 共享文件变更与后续PR说明
-
-本次新增 `assets/handoff/lockscreen-wallpaper.png` 和 `assets/handoff/lockscreen-oct22.png`，未改动原有参考图或公共规范。影响《协作与交接规范》的“第二段与第三段”：第二段的支付后锁屏、第三段的11月2日亮屏及最终回到原日，应共同使用壁纸v1。
-
-这两张图是首个可用版本；合并评审时需要第二人同步使用，后续替换须说明版本。P/F剩余天数【X】、第八周、费用和余额口径继续保留待确认，不写入当前静帧。
+v1的原始生成壁纸、SVG、配置、关键帧与已渲染视频保留，属于历史初稿；其中的旧占位不是当前版本。`scripts/render-lockscreen.py`仍只负责旧版共同静帧，当前动画不调用它。
