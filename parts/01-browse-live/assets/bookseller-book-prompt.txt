@@ -1,0 +1,5 @@
+生成方式：内置image_gen。静态关键画面，不是人物视频。
+
+Edit the supplied fictional Chinese bookstall owner photograph into a second matching keyframe. Preserve EXACT SAME original fictional middle-aged bookseller face, hair, stubble, beige T-shirt, indigo apron, golden afternoon outdoor flea market, awning, purple flags, camera framing and table/books.
+Change his pose: his right hand has picked up the lavender floral "花卉鉴赏" book from the tabletop and now holds it upright prominently at chest height facing camera. The book title must remain exact "花卉鉴赏" and the same cover artwork. His left hand still holds the white/purple megaphone, now lowered slightly beside his chest. He looks at camera with an enthusiastic selling smile as if showing the book to viewers. One hand supports the upright book naturally; anatomy correct, no extra fingers.
+Same 9:16 clean photographic portrait frame, no UI, no captions, no watermark. This is a matched shot of the same owner and same stall, not a different person.

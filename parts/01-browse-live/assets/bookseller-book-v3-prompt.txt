@@ -1,0 +1,4 @@
+生成方式：内置image_gen图片编辑。仅适度年轻化老板形象。
+
+Edit image 1 (the bookseller holding up his book) with ONLY a modest facial age reduction. Image 2 is the approved slightly younger face reference of the SAME seller, about 35–36. Match that face age, hair, stubble, facial structure and natural skin texture consistently.
+Preserve image 1's exact pose holding the lavender "花卉鉴赏" book upright and megaphone lowered at chest, same clothing, table/books, market background, golden daylight, framing and dimensions. Do not change the book title or pose. The seller should look 5–7 years younger, still a lively grown-up bookstall owner, not a student or beauty model. No UI or new text.
