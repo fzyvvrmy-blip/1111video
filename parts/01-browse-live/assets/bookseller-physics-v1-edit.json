@@ -1,0 +1,7 @@
+{
+  "method": "built-in image_gen image edit",
+  "input": "bookseller-book-v4.png",
+  "output": "bookseller-physics-v1.png",
+  "prompt": "Use case: precise-object-edit. Edit target is the supplied portrait of the young Chinese bookseller at the market. Change ONLY the textbook he is holding: replace the floral purple Flower Appreciation cover with a pale lavender and white university physics textbook cover with thin orbital/wave line diagrams. Exact large readable Chinese title: 大学物理B(2). No flowers on this book. Preserve the exact same face, apparent age about 30, hair, expression, skin, beige shirt, denim apron, megaphone, pose, fingers holding the book, full framing, all market background and light. Photorealistic, seamless physically plausible cover replacement. No other text, no captions, no UI. Single image, same portrait aspect ratio.",
+  "review": "Viewed edited image: textbook title reads 大学物理B(2), lavender orbital diagrams; young face, clothing, megaphone and market framing preserved."
+}

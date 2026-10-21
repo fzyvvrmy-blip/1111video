@@ -19,6 +19,7 @@ for(const [file,name] of [[process.env.FONT_REGULAR || 'C:/Windows/Fonts/msyh.tt
   if(fs.existsSync(file))GlobalFonts.registerFromPath(file,name);
 }
 const S=JSON.parse(fs.readFileSync(path.join(DIR,'scene.json'),'utf8'));
+const liveCourse=S.liveCourse||{key:'flowers',title:'花卉鉴赏',credits:2,tag:'早八精品',description:'早八精品 · 美育好课'};
 const OUT=path.join(DIR,'exports'); fs.mkdirSync(OUT,{recursive:true});
 const SCALE=process.argv.includes('--half')?0.5:1;
 const W=Math.round(S.width*SCALE),H=Math.round(S.height*SCALE);
@@ -154,8 +155,8 @@ function livePage(t){
   rr(l,451,143,142,64,32,purple);text(l,'直播中',522,175,29,'#fff',false,'center');
   rr(l,756,143,220,64,32,'rgba(0,0,0,.35)');text(l,'1.5万人观看',866,175,26,'#fff',false,'center');line(l,[[1010,155],[1040,185]],'#fff',5);line(l,[[1040,155],[1010,185]],'#fff',5);
   rr(l,32,269,446,96,22,'rgba(102,0,153,.88)','#e3c1ff',2);text(l,'双11  学分专场',255,317,40,'#fff',true,'center');
-  rr(l,641,280,407,190,23,'rgba(255,251,255,.95)');crop(l,S.referenceCrops.flowers,661,303,115,144,14);
-  text(l,'花卉鉴赏',795,326,36,ink,true);text(l,'2学分',795,379,36,purple,true);text(l,'早八精品',795,429,29,muted);
+  rr(l,641,280,407,190,23,'rgba(255,251,255,.95)');crop(l,S.referenceCrops[liveCourse.key],661,303,115,144,14);
+  text(l,liveCourse.title,795,326,32,ink,true);text(l,`${liveCourse.credits}学分`,795,379,36,purple,true);text(l,liveCourse.tag,795,429,29,muted);
   const lp=clamp((t-10)/2);
   for(let i=0;i<3;i++){
     const y=1650-((t*45+i*112)%350);l.save();l.globalAlpha=(.35+.3*Math.sin(t+i))*lp;l.translate(1000,y);l.scale(.8+i*.1,.8+i*.1);
@@ -163,8 +164,8 @@ function livePage(t){
   }
   const p=outCubic(stage(t,'courseCardAppear'));
   if(p>0){l.save();l.translate(0,(1-p)*380);l.globalAlpha=p;
-    rr(l,28,1760,1024,306,28,'#fff');crop(l,S.referenceCrops.flowers,48,1780,232,265,18);
-    text(l,'花卉鉴赏',310,1820,43,ink,true);text(l,'早八精品 · 美育好课',310,1882,29,muted);text(l,'2学分',310,1987,49,purple,true);
+    rr(l,28,1760,1024,306,28,'#fff');crop(l,S.referenceCrops[liveCourse.key],48,1780,232,265,18);
+    text(l,liveCourse.title,310,1820,43,ink,true);text(l,liveCourse.description,310,1882,29,muted);text(l,`${liveCourse.credits}学分`,310,1987,49,purple,true);
     rr(l,752,1866,268,110,23,purple);text(l,'加入选课车',886,1921,33,'#fff',true,'center');l.restore();
   }
   navigation(l,1);

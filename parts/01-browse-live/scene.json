@@ -1,21 +1,22 @@
 {
-  "status": "v6男促销员声线试做；原生生成号外号外对白与同步表演，声音观感待用户试听",
-  "version": "v6",
+  "status": "v7大学物理主推；四学分、学起来不烧心；原生生成新对白与同步表演",
+  "version": "v7",
   "presenterVideo": {
-    "file": "previews/bookseller-motion-v2.mp4",
+    "file": "previews/bookseller-motion-v3.mp4",
     "start": 6.3,
     "trimStart": 0,
-    "trimEnd": 15,
+    "trimEnd": 11.8,
     "useAudio": true
   },
   "presenterImages": {
-    "megaphone": "assets/bookseller-megaphone-v4.png",
-    "book": "assets/bookseller-book-v4.png"
+    "megaphone": "assets/bookseller-physics-v1.png",
+    "book": "assets/bookseller-physics-v1.png"
   },
+  "liveCourse": {"key":"physics","title":"大学物理B(2)","credits":4,"tag":"学起来不烧心","description":"学起来不烧心"},
   "width": 1080,
   "height": 2376,
   "fps": 30,
-  "duration": 21.3,
+  "duration": 18.1,
   "time": "19:11",
   "cartInitialCount": 0,
   "scenes": {
@@ -24,8 +25,8 @@
     "browseScroll": [4.4, 6.2],
     "liveWindowAppear": [6.3, 6.55],
     "liveWindowExpand": [8.05, 8.25],
-    "courseCardAppear": [20.05, 20.35],
-    "tailHold": [20.5, 21.3]
+    "courseCardAppear": [17.05, 17.35],
+    "tailHold": [17.7, 18.1]
   },
   "referenceCrops": {
     "banner": [22, 350, 804, 240],

@@ -1,0 +1,27 @@
+{
+  "provider": "HeyGen web Creative Studio",
+  "model": "HeyGen Video",
+  "jobId": "fec9d9e7d6ce491a8722fb97c6857060",
+  "jobUrl": "https://app.heygen.com/apps/output/fec9d9e7d6ce491a8722fb97c6857060",
+  "status": "completed",
+  "duration": 15,
+  "aspectRatio": "9:16",
+  "resolution": "768p",
+  "inputs": [
+    "bookseller-physics-v1.png"
+  ],
+  "voiceReference": null,
+  "script": "号外号外！双十一学分大甩卖！大学物理，四学分，学起来不烧心！看一看，挑一挑！三、二、一，上链接！",
+  "prompt": "固定镜头，竖屏书摊直播，一镜到底。严格保持参考图中同一个三十岁左右中国男书店老板、年轻的脸、米色短袖、深蓝围裙、集市背景和紫白色喇叭。教材始终是参考图中的大学物理B(2)，淡紫色物理波纹与原子轨道封面，不出现花卉教材。声音是热情的中年男销售、大卖场促销员的普通话吆喝声：厚实胸腔共鸣、中低男声、略带沙哑颗粒感，笑着招呼顾客，有穿透力、有力、抑扬顿挫，开场放开嗓门喊号外号外。保持这一成熟男促销员的热情声线，不要年轻播音腔或机器人念稿。老板本人说话，嘴部清晰可见，全程准确中文口型同步。完整台词只说一遍，严格为：“号外号外！双十一学分大甩卖！大学物理，四学分，学起来不烧心！看一看，挑一挑！三、二、一，上链接！”特别注意逐字说清“学起来不烧心”，烧心读shao xin，带笑意、自信拍胸脯保证似的热情语气，不增加其他口号。在15秒内自然说完，不重复，不加台词。老板一手拿喇叭偏在嘴旁不遮嘴，另一手把大学物理教材举到胸前展示，书不挡脸；说学起来不烧心时自信点头，倒数微微前倾，说上链接向下指，最后自然微笑收势。连续自然眨眼、头部、肩膀、手臂活动，不切镜、不换脸、不变老。只有男声和很轻的集市环境音，不要音乐、旁白、字幕、UI、手机框。",
+  "billing": "Used the final one displayed free video generation. Zero remain. No purchase or subscription initiated.",
+  "resultUrl": "https://app.heygen.com/videos/heygen-video-fec9d9e7d6ce491a8722fb97c6857060",
+  "savedFile": "../previews/bookseller-motion-v3.mp4",
+  "actualDimensions": [
+    768,
+    1344
+  ],
+  "actualFps": 24,
+  "actualDuration": 15.166666,
+  "edit": "Use source 0–11.8 seconds at original speed, excluding repeated countdown beginning near 11.909 seconds. Phone starts at 6.3 seconds, card appears at 17.05 seconds, duration 18.1 seconds.",
+  "review": "Viewed continuous mouth, book and arm movement. Speech recognition identifies physics/four credits and repeated ending; slogan recognized as 不小心 by the tiny model, possibly a phonetic substitution. The requested script says 不烧心; exact pronunciation and detailed lip sync need human playback review. Generation includes camera framing changes despite fixed-shot instruction."
+}
