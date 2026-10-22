@@ -1,0 +1,206 @@
+{
+  "status": "v7大学物理主推；四学分、学起来不烧心；原生生成新对白与同步表演",
+  "version": "full-edit-source01",
+  "presenterVideo": {
+    "file": "../../../../parts/01-browse-live/previews/bookseller-motion-v3.mp4",
+    "start": 6.3,
+    "trimStart": 0,
+    "trimEnd": 11.8,
+    "useAudio": true
+  },
+  "presenterImages": {
+    "megaphone": "../../../../parts/01-browse-live/assets/bookseller-physics-v1.png",
+    "book": "../../../../parts/01-browse-live/assets/bookseller-physics-v1.png"
+  },
+  "liveCourse": {
+    "key": "physics",
+    "title": "大学物理B(2)",
+    "credits": 4,
+    "tag": "学起来不烧心",
+    "description": "学起来不烧心"
+  },
+  "width": 1080,
+  "height": 2376,
+  "fps": 30,
+  "duration": 18.1,
+  "time": "19:11",
+  "cartInitialCount": 0,
+  "scenes": {
+    "openingFade": [
+      0,
+      0.4
+    ],
+    "openingToHome": [
+      1.1,
+      2.2
+    ],
+    "browseScroll": [
+      4.4,
+      6.2
+    ],
+    "liveWindowAppear": [
+      6.3,
+      6.55
+    ],
+    "liveWindowExpand": [
+      8.05,
+      8.25
+    ],
+    "courseCardAppear": [
+      17.05,
+      17.35
+    ],
+    "tailHold": [
+      17.7,
+      18.1
+    ]
+  },
+  "referenceCrops": {
+    "banner": [
+      22,
+      350,
+      804,
+      240
+    ],
+    "calculus": [
+      25,
+      872,
+      383,
+      213
+    ],
+    "physics": [
+      435,
+      872,
+      385,
+      213
+    ],
+    "shooting": [
+      27,
+      1265,
+      382,
+      225
+    ],
+    "flowers": [
+      435,
+      1265,
+      385,
+      225
+    ]
+  },
+  "audio": {
+    "voice": null,
+    "referenceVoice": null,
+    "music": null,
+    "effects": "界面提示音与人物视频同步原声；原速，保留低频男声共鸣，仅轻微清理极低频与高频",
+    "voiceFilter": {
+      "highpass": 80,
+      "lowpass": 7000
+    }
+  },
+  "advertisements": [
+    {
+      "title": "双11 学分专场",
+      "copy": "知识好物，限时开抢！",
+      "badge": "校园好课"
+    },
+    {
+      "title": "学分慢慢凑",
+      "copy": "时间先算够",
+      "badge": "理性选课"
+    },
+    {
+      "title": "两学分美育",
+      "copy": "早八见真章",
+      "badge": "花卉鉴赏"
+    }
+  ],
+  "browseGestures": [
+    {
+      "start": 4.4,
+      "end": 5.05,
+      "from": 0,
+      "to": 1120
+    },
+    {
+      "start": 5.55,
+      "end": 6.2,
+      "from": 1120,
+      "to": 2360
+    }
+  ],
+  "extraCourseCreditsConfirmed": false,
+  "courses": [
+    {
+      "key": "calculus",
+      "title": "微积分A（1）",
+      "credits": 5,
+      "tag": "年选2000+ · 两极分化"
+    },
+    {
+      "key": "physics",
+      "title": "大学物理B(2)",
+      "credits": 4,
+      "tag": "专业基础 · 热门课程"
+    },
+    {
+      "key": "shooting",
+      "title": "三年级女生射击",
+      "credits": 1,
+      "tag": "限量开放 · 库存紧张"
+    },
+    {
+      "key": "flowers",
+      "title": "花卉鉴赏",
+      "credits": 2,
+      "tag": "早八精品 · 美育好课"
+    },
+    {
+      "key": "algebra",
+      "title": "线性代数",
+      "credits": 4,
+      "tag": "基础必备"
+    },
+    {
+      "key": "probability",
+      "title": "概率论与数理统计",
+      "credits": 3,
+      "tag": "统计入门"
+    },
+    {
+      "key": "coding",
+      "title": "程序设计基础",
+      "credits": 3,
+      "tag": "实践课程"
+    },
+    {
+      "key": "art",
+      "title": "艺术导论",
+      "credits": 2,
+      "tag": "美育专区"
+    },
+    {
+      "key": "psychology",
+      "title": "心理学概论",
+      "credits": 2,
+      "tag": "通识课程"
+    },
+    {
+      "key": "writing",
+      "title": "学术写作",
+      "credits": 2,
+      "tag": "表达训练"
+    },
+    {
+      "key": "library",
+      "title": "信息检索与利用",
+      "credits": 1,
+      "tag": "学习工具"
+    },
+    {
+      "key": "photo",
+      "title": "摄影基础",
+      "credits": 2,
+      "tag": "实践与观察"
+    }
+  ]
+}

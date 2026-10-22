@@ -1,0 +1,24 @@
+# 第二段交付记录
+
+- 负责人：张艺恒
+- 状态：完整动画预览已完成；等待观看反馈与三段素材统一。
+- 版本：preview-v6，2026-10-21。费用页改为白底清华紫，简化支付方式；新增电工与电子技术选修课，订单11门、35学分、20小时睡眠。支付成功页明细新增「签收后扣除睡眠：20小时」。
+- 成片：[part02-preview-v6.mp4](renders/part02-preview-v6.mp4)，28秒，1080×2376，30fps，H.264/AAC。旧版视频保留在`renders/`中供比较；团队共享下载地址待总剪确定。
+- 独立可播放页面：[part02-preview.html](part02-preview.html)，支持播放、重播、拖动进度和静音。
+- 可编辑源文件：`animation.template.html`、`preview-state.json`、`build_preview.py`、`render_preview.cjs`、`inspect_preview.py`。
+- 启动或渲染方式：见本目录[README.md](README.md)。直接打开HTML即可预览，重建与导出使用已安装的Python、Node、Playwright、浏览器和FFmpeg。
+- 首帧：[商品列表](keyframes/preview-v6/01-list.png)，角标0；必修及选修均未加购。
+- 尾帧：[完全黑屏](keyframes/preview-v6/09-black.png)。
+- 关键帧：[抢课高潮](keyframes/preview-v6/02-rush.png)、[11门状态](keyframes/preview-v6/03-courses.png)、[十一门同屏](keyframes/preview-v6/04-cart.png)、[睡眠代价](keyframes/preview-v6/05-cost.png)、[先用后付](keyframes/preview-v6/06-deferred.png)、[20小时移动](keyframes/preview-v6/10-transfer.png)、[倒数中](keyframes/preview-v6/11-countdown.png)、[期中周送达](keyframes/preview-v6/07-success.png)、[临时锁屏](keyframes/preview-v6/08-lockscreen.png)。
+- 实际编码视频审阅图：[overview.jpg](keyframes/preview-v6/overview.jpg)，[手机尺寸审阅图](keyframes/preview-v6/mobile-review.jpg)，[数字移动与倒数](keyframes/preview-v6/payment-transition.jpg)。
+- 声音与音轨说明：立体声操作音已合入视频；独立音轨为`renders/operations.wav`。必修批量加购对应一次点击及五次较轻的入车音；选修点击使用约34毫秒的干脆轻触声，落袋为带短尾的玻璃音，后期逐渐变密。进入选课车时收住促销声，并以短提示音引出睡眠费用。另含面板弹出、先用后付强调、支付成功与熄屏音。不含背景音乐与主播对白。
+- 字体：当前实际渲染使用Microsoft YaHei；HTML含后备字体。图标为内嵌SVG，待与其他两段统一。
+- 商品列表版本：本段完整可编辑界面；初始角标按用户最新修订改为0，包含必修课批量加购和带选修标签的课程卡。首帧为交接提案，尚未替换公共`assets/handoff/product-list.png`，第一段初始角标需同步为0。
+- 锁屏版本：本段临时绘制的紫色校园锁屏。10月22日星期四、19:11；等待第三人提供共同壁纸和日期图后替换。
+- 11门课程与扣款口径：初始0门；必修五门为微积分、大学物理、概率论、线性代数、思政，其余六门标为选修。本段预览草案共35学分、预估睡眠20小时、余额6小时；先用后付本次扣除0小时，支付前后余额不变。完整清单见`preview-state.json`。共同清单尚未覆盖，需与第一、三段同步。
+- 画面：费用区使用白底、紫色数字及细分隔线；减少渐变、边框、阴影和弹跳。先用后付采用浅紫选中态，数字20小时向下移动，上方快速降到0；下方持续显示签收后消耗20小时。保留原有必修一键加购主按钮、加速选修加购、期中周送达和日期重点。
+- 新增课程：电工与电子技术，选修、4学分、睡眠2小时；类别和数值均由用户确认。新增电路封面和加购动作，所有页面数量、合计和睡眠同步由清单计算。
+- 文案数字：清理无依据的150人热度、具体余位、TOP1排名与29条消息角标。加购提醒保留自然文案，订单内不含X、undefined、NaN或null占位。
+- 页面检查：初始0门、最终11门，必修5门、选修6门；11门全部同屏、无滚动，课程名称无截断。合计35学分、20小时；先用后付前20小时、倒数中11小时、结束0小时，下方20小时在确认按钮上方完整可见。主按钮236×56设计像素，页面无脚本错误。
+- 成片检查：840帧、28秒、1080×2376、30fps；纯黑尾帧及完整音视频解码核验结果见`renders/qa.json`。关键帧、数字转移和手机尺寸审阅图见`keyframes/preview-v6/`。
+- 待确认与未完成项：正式课程/费用清单、共同字体与图标、第一段课程卡尾帧、第三段共同锁屏、团队共享视频地址、总剪配乐与跨段音轨。如需主播小窗与对白延续，需第一段提供同一源音轨及交接位置。
