@@ -1,0 +1,6 @@
+生成方式：内置image_gen图片编辑。重新设计三十岁左右年轻面孔。
+
+Recast the seller in this photo as an unmistakably YOUNG ADULT Chinese male bookstore owner, about 29–30 years old. The reference controls clothing, props, market, pose and framing ONLY; do not preserve its middle-aged face.
+Create a new youthful adult face: clean-shaven cheeks and chin, no moustache, no beard shadow, no crow's feet, no deep nasolabial creases or forehead lines, fresh firm cheeks, clear bright eyes, natural healthy skin texture. Dark short casually tousled hair with a full hairline. Friendly energetic ordinary young small-business owner, realistic and approachable, not a glamorous idol and not a teenager. He is visibly a full decade younger than the reference man.
+Preserve the exact beige T-shirt and indigo denim apron, white megaphone with purple rim held near his mouth, right hand on the lavender floral book titled exactly "花卉鉴赏", wooden table and stacks of books, outdoor campus flea market with purple bunting and warm afternoon sunlight. Same head-to-waist framing and portrait dimensions. Mouth open mid sales call, confident cheerful expression.
+Priority: the face MUST visibly read around age 30, not late thirties or forties. No UI, subtitle, watermark or added advertising. One photographic image.

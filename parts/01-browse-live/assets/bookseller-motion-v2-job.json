@@ -1,0 +1,28 @@
+{
+  "provider": "HeyGen web Creative Studio",
+  "model": "HeyGen Video",
+  "jobId": "cce59d53dc5445958c01b90fdcbeba6e",
+  "jobUrl": "https://app.heygen.com/apps/output/cce59d53dc5445958c01b90fdcbeba6e",
+  "status": "completed",
+  "duration": 15,
+  "aspectRatio": "9:16",
+  "resolution": "768p",
+  "inputs": [
+    "bookseller-megaphone-v4.png",
+    "bookseller-book-v4.png"
+  ],
+  "voiceReference": null,
+  "script": "号外号外！双十一学分大甩卖！花卉鉴赏，两学分，早八精品！看一看，挑一挑！三、二、一，上链接！",
+  "prompt": "固定镜头，竖屏书摊直播，一镜到底。外形严格沿用两张参考图里的同一个三十岁左右中国男书店老板，米色短袖、深蓝围裙、集市书摊和紫白色喇叭，保持年轻脸，不增加皱纹和胡子。最重要的是声音：使用热情的中年男销售、大卖场促销员的普通话吆喝声，胸腔共鸣厚实，中低男声，略带沙哑颗粒感，笑着招呼顾客，有力、有穿透力、抑扬顿挫，像经验丰富的商场促销员，绝不是年轻男播音腔或机器人念稿。开场放开嗓门喊“号外——号外！”，两次号外有明显招呼节奏，后面快速热情推销，倒数逐字有力。声音由画面中老板本人说出，全程准确中文口型同步。台词只完整说一遍，严格为：“号外号外！双十一学分大甩卖！花卉鉴赏，两学分，早八精品！看一看，挑一挑！三、二、一，上链接！”在15秒内自然说完这段，不重复，不添加台词。老板一手拿喇叭但不遮嘴，另一手拿起摊上的花卉教材展示，倒数时微微前倾，说上链接时指向画面下方，结尾微笑点头自然收势。嘴部清晰可见，表情开朗，动作自然。只保留男声和很轻的集市环境声，不要配乐、旁白、字幕、界面、手机框、转场，不要年龄变老。",
+  "billing": "Used one of two displayed remaining free video generations; one remains. No purchase or subscription initiated.",
+  "resultUrl": "https://app.heygen.com/videos/heygen-video-cce59d53dc5445958c01b90fdcbeba6e",
+  "savedFile": "../previews/bookseller-motion-v2.mp4",
+  "actualDimensions": [
+    768,
+    1344
+  ],
+  "actualFps": 24,
+  "actualDuration": 15.166666,
+  "edit": "Use source 0–15 seconds at original speed, phone start 6.3 seconds; card appears at global 20.05 seconds. No old synthetic voice reference. Preserve native audio and matching lip performance.",
+  "review": "Viewed continuous facial and arm motion. Local speech recognition identifies one pass of the requested script (homophone errors in recognition); voice character and detailed lip sync remain for human viewing."
+}

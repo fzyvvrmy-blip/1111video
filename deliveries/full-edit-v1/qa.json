@@ -1,0 +1,55 @@
+{
+  "video": "double11-full-edit-v2.mp4",
+  "duration": 69.971646,
+  "frames": 2099,
+  "dimensions": [
+    1080,
+    2376
+  ],
+  "fps": 30,
+  "audio": {
+    "codec": "aac",
+    "channels": 2,
+    "sampleRate": 48000
+  },
+  "completeDecode": true,
+  "lastFrameMaxRGB": 2,
+  "order": {
+    "courses": 11,
+    "credits": 35,
+    "estimatedSleep": 20,
+    "sleepBalanceBeforeReceipts": 6,
+    "sleepLedger": [
+      6,
+      5,
+      4,
+      3,
+      1
+    ],
+    "pendingLedger": [
+      11,
+      10,
+      9,
+      8,
+      7
+    ],
+    "failedCost": 2,
+    "failedAttemptDeducts": false
+  },
+  "reviewFrames": [
+    534,
+    538,
+    543,
+    548,
+    555,
+    561,
+    566,
+    570
+  ],
+  "byteSize": 20136724,
+  "cardToList": {
+    "boundaryFrame": 567,
+    "meanAbsolutePixelDifference": 0.0,
+    "cartCountAtEntry": 0
+  }
+}

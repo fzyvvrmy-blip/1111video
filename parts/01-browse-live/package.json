@@ -1,0 +1,7 @@
+{
+  "name": "course-video-part-01",
+  "private": true,
+  "type": "module",
+  "scripts": { "render": "node render.mjs", "frames": "node render.mjs --frames-only" },
+  "dependencies": { "@napi-rs/canvas": "0.1.100" }
+}
