@@ -165,11 +165,26 @@
     8,
     7
   ],
-  "masterSha256": "50691ab6945f8beff345718e215832e5f6b248ff30c3339f640fe75b10aad6ad",
+  "masterSha256": "d169b3a6a97d8540ce15f829219d9320a83e84b7cca20c77d3f01828df498a13",
   "part03OriginalGitBlob": "31bc24755d3f87083bd20c1dec5d1f60fe74fef2",
   "visualPatches": [
     "part01 remove message 29 badge",
     "part02 matching lockscreen, remove flower live-product tag and old presenter label",
-    "part03 additional coalesced notification/count 11 and pending counts after four receipts, remove message 29 badge"
-  ]
+    "part03 additional coalesced notification/count 11 and pending counts after four receipts, remove message 29 badge",
+    "part01 course-card press/loading feedback and expansion to exact Part02 first frame, preserving empty-cart entry"
+  ],
+  "previousMasterSha256": "50691ab6945f8beff345718e215832e5f6b248ff30c3339f640fe75b10aad6ad",
+  "output": "double11-full-edit-v2.mp4",
+  "entryTransition": {
+    "tap": 17.9,
+    "loading": 18.02,
+    "expand": [
+      18.22,
+      18.72
+    ],
+    "pageImage": "../../assets/part02-entry.png",
+    "cartCountOnArrival": 0
+  },
+  "entryImageSha256": "5cabc958c31d25727933784acc870e568d7ee67e583590133132e60dfcff9571",
+  "entryImageSource": "Decoded frame 0 from the rendered Part02 preview-v6, including the common lockscreen correction."
 }

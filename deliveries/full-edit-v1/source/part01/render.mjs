@@ -26,6 +26,7 @@ const W=Math.round(S.width*SCALE),H=Math.round(S.height*SCALE);
 const canvas=createCanvas(W,H),c=canvas.getContext('2d');
 const liveCanvas=createCanvas(1080,2376),l=liveCanvas.getContext('2d');
 const home=await loadImage(path.join(ROOT,'assets/references/home-v1.png'));
+const entryPage=S.entryTransition?await loadImage(path.join(DIR,S.entryTransition.pageImage)):null;
 const presenter=await loadImage(path.join(DIR,S.presenterImages?.megaphone || 'assets/bookseller-megaphone.png'));
 const presenterBook=await loadImage(path.join(DIR,S.presenterImages?.book || 'assets/bookseller-book.png'));
 const presenterFile=S.presenterVideo?.file&&path.join(DIR,S.presenterVideo.file);
@@ -143,7 +144,7 @@ function homePage(t){
   c.restore();
   rr(c,0,0,1080,100,0,'#f8f6ff');status(c);navigation(c,0);
 }
-function livePage(t){
+function livePage(t,interactionT=t){
   l.clearRect(0,0,1080,2376);
   l.fillStyle='#27222e';l.fillRect(0,0,1080,2376);
   // A configured video uses the same decoded frame in both live layouts.
@@ -166,7 +167,16 @@ function livePage(t){
   if(p>0){l.save();l.translate(0,(1-p)*380);l.globalAlpha=p;
     rr(l,28,1760,1024,306,28,'#fff');crop(l,S.referenceCrops[liveCourse.key],48,1780,232,265,18);
     text(l,liveCourse.title,310,1820,43,ink,true);text(l,liveCourse.description,310,1882,29,muted);text(l,`${liveCourse.credits}学分`,310,1987,49,purple,true);
-    rr(l,752,1866,268,110,23,purple);text(l,'加入选课车',886,1921,33,'#fff',true,'center');l.restore();
+    const entry=S.entryTransition;
+    const press=entry?Math.sin(Math.PI*clamp((interactionT-entry.tap)/.16)):0;
+    const loading=entry&&interactionT>=entry.loading&&interactionT<entry.expand[1];
+    l.save();l.translate(886,1921+3*press);l.scale(1-.045*press,1-.045*press);l.translate(-886,-1921);
+    rr(l,752,1866,268,110,23,press>0?'#580080':purple);
+    if(loading){
+      const angle=interactionT*11;l.strokeStyle='#fff';l.lineWidth=4;l.beginPath();l.arc(800,1921,12,angle,angle+Math.PI*1.55);l.stroke();
+      text(l,'加载中',899,1921,31,'#fff',true,'center');
+    }else text(l,'加入选课车',886,1921,33,'#fff',true,'center');
+    l.restore();l.restore();
   }
   navigation(l,1);
 }
@@ -208,25 +218,41 @@ function touch(t){
   const p=(t-7.85)/.2;if(p<0||p>1)return;
   c.save();c.globalAlpha=Math.sin(Math.PI*p)*.7;c.strokeStyle='#fff';c.lineWidth=4;c.beginPath();c.arc(905,410,12+17*p,0,Math.PI*2);c.stroke();c.restore();
 }
+function enterCourseList(t){
+  const entry=S.entryTransition;if(!entry)return;
+  const tap=(t-entry.tap)/.18;
+  if(tap>=0&&tap<=1){c.save();c.globalAlpha=Math.sin(Math.PI*tap)*.8;c.strokeStyle='#fff';c.fillStyle='rgba(255,255,255,.15)';c.lineWidth=4;c.beginPath();c.arc(886,1921,12+17*tap,0,Math.PI*2);c.fill();c.stroke();c.restore();}
+  if(t<entry.expand[0])return;
+  const raw=clamp((t-entry.expand[0])/(entry.expand[1]-entry.expand[0])),p=outCubic(raw);
+  if(raw>=1){c.drawImage(entryPage,0,0,1080,2376);return;}
+  const x=lerp(28,0,p),y=lerp(1760,0,p),w=lerp(1024,1080,p),h=lerp(306,2376,p),r=28*(1-p);
+  c.save();c.fillStyle=`rgba(15,5,24,${.14*p})`;c.fillRect(0,0,1080,2376);
+  c.shadowColor='rgba(26,4,44,.2)';c.shadowBlur=35*(1-p);c.shadowOffsetY=-8*(1-p);rr(c,x,y,w,h,r,'#fff');c.shadowColor='transparent';
+  c.beginPath();c.roundRect(x,y,w,h,r);c.clip();
+  const reveal=ease(clamp((raw-.24)/.16));
+  c.globalAlpha=1-ease(clamp(raw/.22));c.drawImage(liveCanvas,28,1760,1024,306,x,y,w,306*w/1024);
+  c.globalAlpha=reveal;c.drawImage(entryPage,x,y,w,2376*w/1080);c.restore();
+}
 async function render(t){
   if(presenterVideo){const sourceTime=Math.max(0,t-S.presenterVideo.start)+(S.presenterVideo.trimStart||0);presenterFrame=await presenterVideo.frame(Math.min(sourceTime,(S.presenterVideo.trimEnd||Infinity)-1/S.fps));}
   c.resetTransform();c.clearRect(0,0,W,H);c.scale(SCALE,SCALE);
   const sceneT=Math.min(t,S.scenes.tailHold[0]);
-  homePage(sceneT);livePage(sceneT);floatingLive(sceneT);touch(sceneT);opening(sceneT);
+  homePage(sceneT);livePage(sceneT,t);floatingLive(sceneT);touch(sceneT);opening(sceneT);enterCourseList(t);
   const light=ease(stage(t,'openingFade'));
   if(light<1){c.fillStyle=`rgba(18,12,24,${1-light})`;c.fillRect(0,0,1080,2376);}
 }
 const courseFeed=createCanvas(1080,Math.ceil(S.courses.length/2)*670);
 const feedCtx=courseFeed.getContext('2d');
 for(let i=0;i<S.courses.length;i++){const row=Math.floor(i/2),item=S.courses[i];course(feedCtx,item.key,item.title,item.credits,item.tag,i%2?562:20,row*670);}
-const marks=[...new Set([0.8,2.4,3.1,3.95,4.8,6.2,7.6,7.98,8.15,8.35,11.2,13.1,15.8,S.duration-.05].filter(t=>t<S.duration))].sort((a,b)=>a-b);
+const marks=[...new Set([0.8,2.4,3.1,3.95,4.8,6.2,7.6,7.98,8.15,8.35,11.2,13.1,15.8,17.93,18.1,18.3,18.45,18.7,S.duration-.05].filter(t=>t<S.duration))].sort((a,b)=>a-b);
 for(const t of marks){await render(t);fs.writeFileSync(path.join(OUT,`frame-${t.toFixed(2)}.png`),canvas.toBuffer('image/png'));}
-await render(S.duration-1/S.fps);fs.writeFileSync(path.join(DIR,'live-card-end.png'),canvas.toBuffer('image/png'));
+await render(S.duration-1/S.fps);fs.writeFileSync(path.join(DIR,S.entryTransition?'part01-list-entry-end.png':'live-card-end.png'),canvas.toBuffer('image/png'));
 presenterVideo?.close();
 
 function writeAudio(filename){
   const rate=48000,count=Math.ceil(S.duration*rate);const pcm=Buffer.alloc(count*2);
   const events=[{t:6.3,d:.16,f:660,g:.10},{t:7.94,d:.07,f:900,g:.11},{t:8.08,d:.12,f:620,g:.07},{t:S.scenes.courseCardAppear[0],d:.22,f:600,g:.09}];
+  if(S.entryTransition)events.push({t:S.entryTransition.tap,d:.06,f:1500,g:.1},{t:S.entryTransition.expand[0],d:.18,f:650,g:.035});
   for(let i=0;i<count;i++){const t=i/rate;let v=0;for(const e of events){const z=t-e.t;if(z>=0&&z<e.d){const env=Math.pow(Math.sin(Math.PI*z/e.d),2)*Math.exp(-9*z);v+=Math.sin(2*Math.PI*e.f*z)*env*e.g;}}pcm.writeInt16LE(Math.max(-32767,Math.min(32767,Math.round(v*32767))),i*2);}
   const hdr=Buffer.alloc(44);hdr.write('RIFF');hdr.writeUInt32LE(36+pcm.length,4);hdr.write('WAVE',8);hdr.write('fmt ',12);hdr.writeUInt32LE(16,16);hdr.writeUInt16LE(1,20);hdr.writeUInt16LE(1,22);hdr.writeUInt32LE(rate,24);hdr.writeUInt32LE(rate*2,28);hdr.writeUInt16LE(2,32);hdr.writeUInt16LE(16,34);hdr.write('data',36);hdr.writeUInt32LE(pcm.length,40);fs.writeFileSync(filename,Buffer.concat([hdr,pcm]));
 }
@@ -238,7 +264,8 @@ if(!process.argv.includes('--frames-only')){
   const voice=S.audio.voice && path.join(DIR,S.audio.voice);
   if(presenterVideo&&S.presenterVideo.useAudio){
     const voiceFilter=S.audio.voiceFilter||{highpass:250,lowpass:5000};
-    args.push('-i',presenterFile,'-filter_complex',`[2:a]atrim=start=${S.presenterVideo.trimStart||0}${S.presenterVideo.trimEnd?`:end=${S.presenterVideo.trimEnd}`:''},asetpts=PTS-STARTPTS,highpass=f=${voiceFilter.highpass},lowpass=f=${voiceFilter.lowpass},alimiter=limit=0.85,adelay=${S.presenterVideo.start*1000}:all=1[voice];[1:a][voice]amix=inputs=2:duration=first:normalize=0[a]`,'-map','0:v:0','-map','[a]');
+    const audioEnd=S.presenterVideo.audioTrimEnd??S.presenterVideo.trimEnd;
+    args.push('-i',presenterFile,'-filter_complex',`[2:a]atrim=start=${S.presenterVideo.trimStart||0}${audioEnd?`:end=${audioEnd}`:''},asetpts=PTS-STARTPTS,highpass=f=${voiceFilter.highpass},lowpass=f=${voiceFilter.lowpass},alimiter=limit=0.85,adelay=${S.presenterVideo.start*1000}:all=1[voice];[1:a][voice]amix=inputs=2:duration=first:normalize=0[a]`,'-map','0:v:0','-map','[a]');
   }else if(voice && fs.existsSync(voice)){
     const tempo=S.audio.voiceDuration/S.audio.voiceTargetDuration;
     args.push('-i',voice,'-filter_complex',`[2:a]atempo=${tempo},highpass=f=450,lowpass=f=3800,volume=1.1,alimiter=limit=0.7,adelay=${S.audio.voiceStart*1000}:all=1[voice];[1:a][voice]amix=inputs=2:duration=first:normalize=0[a]`,'-map','0:v:0','-map','[a]');

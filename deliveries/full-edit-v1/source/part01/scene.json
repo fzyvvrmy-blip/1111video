@@ -1,12 +1,13 @@
 {
-  "status": "v7大学物理主推；四学分、学起来不烧心；原生生成新对白与同步表演",
-  "version": "full-edit-source01",
+  "status": "总剪v2：上链接后点击加入选课车，短加载，卡片展开为第二段真实首屏",
+  "version": "full-edit-source01-v2",
   "presenterVideo": {
     "file": "../../../../parts/01-browse-live/previews/bookseller-motion-v3.mp4",
     "start": 6.3,
     "trimStart": 0,
-    "trimEnd": 11.8,
-    "useAudio": true
+    "trimEnd": 12.6,
+    "useAudio": true,
+    "audioTrimEnd": 11.8
   },
   "presenterImages": {
     "megaphone": "../../../../parts/01-browse-live/assets/bookseller-physics-v1.png",
@@ -22,7 +23,7 @@
   "width": 1080,
   "height": 2376,
   "fps": 30,
-  "duration": 18.1,
+  "duration": 18.9,
   "time": "19:11",
   "cartInitialCount": 0,
   "scenes": {
@@ -52,7 +53,7 @@
     ],
     "tailHold": [
       17.7,
-      18.1
+      18.9
     ]
   },
   "referenceCrops": {
@@ -202,5 +203,15 @@
       "credits": 2,
       "tag": "实践与观察"
     }
-  ]
+  ],
+  "entryTransition": {
+    "tap": 17.9,
+    "loading": 18.02,
+    "expand": [
+      18.22,
+      18.72
+    ],
+    "pageImage": "../../assets/part02-entry.png",
+    "cartCountOnArrival": 0
+  }
 }

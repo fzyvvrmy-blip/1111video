@@ -1,16 +1,16 @@
 {
-  "version": "full-edit-v1",
+  "version": "full-edit-v2",
   "width": 1080,
   "height": 2376,
   "fps": 30,
   "parts": [
     {
       "id": "part01",
-      "input": "source/part01/exports/part-01-interface-preview-full-edit-source01.mp4",
+      "input": "source/part01/exports/part-01-interface-preview-full-edit-source01-v2.mp4",
       "ranges": [
         [
-          0.0,
-          18.1
+          0,
+          18.9
         ]
       ]
     },
@@ -99,12 +99,24 @@
     "messageBadge": null
   },
   "transitions": [
-    "Direct cut from live course card to product list",
+    "Tap course-card button after 上链接; press response, short loading spinner, white card expands to exact Part02 first frame; cart remains zero until Part02 selections.",
     "Identical October 22 lockscreen asset before black and at return; November 2 same wallpaper",
     "Notification sound follows a short continuous black gap"
   ],
   "notes": [
     "Part03 original ten-order render receives visible pending-count correction and an additional coalesced arrival; unseen electronics order is included in continuity ledger.",
     "No new character or voice generation. The prior unconfirmed 不烧心 pronunciation remains unchanged."
-  ]
+  ],
+  "output": "double11-full-edit-v2.mp4",
+  "reviewFrames": [
+    534,
+    538,
+    543,
+    548,
+    555,
+    561,
+    566,
+    570
+  ],
+  "reviewImage": "card-to-list-review-v2.jpg"
 }

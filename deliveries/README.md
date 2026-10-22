@@ -2,9 +2,9 @@
 
 总剪负责人：仓库所有者，本聊天统筹。
 
-当前总剪：[完整预览v1](full-edit-v1/previews/double11-full-edit-v1.mp4)，约69.167秒，1080×2376、30fps、48kHz双声道。使用第一段v7、第二段v6、第三段v3，补齐锁屏、订单数量与消息角标衔接。尚处审阅阶段，不自动合并main。
+当前总剪：[完整预览v2](full-edit-v1/previews/double11-full-edit-v2.mp4)，约69.967秒，1080×2376、30fps、48kHz双声道。新增点击“加入选课车”、短加载、课程卡展开为第二段列表的过渡；[短预览](full-edit-v1/previews/card-to-list-preview-v2.mp4)可单独审阅。使用第一段v7、第二段v6、第三段v3，保留锁屏、订单数量与消息角标修正。尚处审阅阶段，不自动合并main。此前[v1](full-edit-v1/previews/double11-full-edit-v1.mp4)保留对照。
 
-可编辑工程、来源版本、逐段时间表、重建步骤和验证记录见[总剪目录](full-edit-v1/README.md)。关键拼接帧见[衔接审阅图](full-edit-v1/previews/transitions-review.jpg)。
+可编辑工程、来源版本、逐段时间表、重建步骤和验证记录见[总剪目录](full-edit-v1/README.md)。当前转场关键帧见[v2衔接审阅图](full-edit-v1/previews/card-to-list-review-v2.jpg)。
 
 总剪时记录三段版本、共享素材版本、统一参数、背景音乐及可访问的成片链接。先检查第一段课程卡与第二段商品列表的课程信息是否一致，第二段黑屏与第三段通知声能否接上，以及结尾锁屏是否一致。
 

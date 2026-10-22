@@ -1,7 +1,7 @@
 {
-  "video": "double11-full-edit-v1.mp4",
-  "duration": 69.167646,
-  "frames": 2075,
+  "video": "double11-full-edit-v2.mp4",
+  "duration": 69.971646,
+  "frames": 2099,
   "dimensions": [
     1080,
     2376
@@ -37,14 +37,19 @@
     "failedAttemptDeducts": false
   },
   "reviewFrames": [
-    537,
-    546,
-    1176,
-    1236,
-    1260,
-    1356,
-    1444,
-    1890
+    534,
+    538,
+    543,
+    548,
+    555,
+    561,
+    566,
+    570
   ],
-  "byteSize": 19384987
+  "byteSize": 20136724,
+  "cardToList": {
+    "boundaryFrame": 567,
+    "meanAbsolutePixelDifference": 0.0,
+    "cartCountAtEntry": 0
+  }
 }

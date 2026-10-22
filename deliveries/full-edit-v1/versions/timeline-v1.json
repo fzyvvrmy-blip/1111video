@@ -1,0 +1,110 @@
+{
+  "version": "full-edit-v1",
+  "width": 1080,
+  "height": 2376,
+  "fps": 30,
+  "parts": [
+    {
+      "id": "part01",
+      "input": "source/part01/exports/part-01-interface-preview-full-edit-source01.mp4",
+      "ranges": [
+        [
+          0.0,
+          18.1
+        ]
+      ]
+    },
+    {
+      "id": "part02",
+      "input": "source/part02/renders/part02-preview-v6.mp4",
+      "ranges": [
+        [
+          0.0,
+          8.2
+        ],
+        [
+          9.8,
+          17.3
+        ],
+        [
+          17.8,
+          20.4
+        ],
+        [
+          21.866666666666667,
+          26.5
+        ]
+      ]
+    },
+    {
+      "id": "part03",
+      "input": "exports/part03-continuity.mp4",
+      "ranges": [
+        [
+          0.16666666666666666,
+          4.9
+        ],
+        [
+          5.4,
+          23.3
+        ],
+        [
+          23.9,
+          27.3
+        ],
+        [
+          27.9,
+          30
+        ]
+      ]
+    }
+  ],
+  "upstream": {
+    "part01": {
+      "branch": "work/part-01",
+      "commit": "e15dec70ca47acb092dc2d578ee9514f7d7c3b88",
+      "version": "v7"
+    },
+    "part02": {
+      "branch": "work/part-02",
+      "commit": "11a66d37b73a1071c274cd56f77706cd8c225b28",
+      "version": "preview-v6"
+    },
+    "part03": {
+      "branch": "codex/part-03",
+      "commit": "1a4f6db928b04b735acd4afcdac98b19950aa0a8",
+      "version": "part03-animation-v3"
+    }
+  },
+  "continuity": {
+    "courses": 11,
+    "credits": 35,
+    "estimatedSleep": 20,
+    "openingSleepBalance": 6,
+    "sleepLedger": [
+      6,
+      5,
+      4,
+      3,
+      1
+    ],
+    "failedCourse": "大学物理B(2)",
+    "failedCost": 2,
+    "failedAttemptDeducts": false,
+    "pfDays": 1,
+    "weeks": [
+      6,
+      8
+    ],
+    "messageBadge": null
+  },
+  "transitions": [
+    "Direct cut from live course card to product list",
+    "Identical October 22 lockscreen asset before black and at return; November 2 same wallpaper",
+    "Notification sound follows a short continuous black gap"
+  ],
+  "notes": [
+    "Part03 original ten-order render receives visible pending-count correction and an additional coalesced arrival; unseen electronics order is included in continuity ledger.",
+    "No new character or voice generation. The prior unconfirmed 不烧心 pronunciation remains unchanged."
+  ]
+}

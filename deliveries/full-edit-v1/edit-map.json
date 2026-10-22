@@ -1,68 +1,68 @@
 {
-  "duration": 69.166667,
+  "duration": 69.966667,
   "segments": [
     {
       "part": "part01",
-      "sourceIn": 0.0,
-      "sourceOut": 18.1,
+      "sourceIn": 0,
+      "sourceOut": 18.9,
       "masterIn": 0,
-      "masterOut": 18.1
+      "masterOut": 18.9
     },
     {
       "part": "part02",
       "sourceIn": 0.0,
       "sourceOut": 8.2,
-      "masterIn": 18.1,
-      "masterOut": 26.3
+      "masterIn": 18.9,
+      "masterOut": 27.1
     },
     {
       "part": "part02",
       "sourceIn": 9.8,
       "sourceOut": 17.3,
-      "masterIn": 26.3,
-      "masterOut": 33.8
+      "masterIn": 27.1,
+      "masterOut": 34.6
     },
     {
       "part": "part02",
       "sourceIn": 17.8,
       "sourceOut": 20.4,
-      "masterIn": 33.8,
-      "masterOut": 36.4
+      "masterIn": 34.6,
+      "masterOut": 37.2
     },
     {
       "part": "part02",
       "sourceIn": 21.866666666666667,
       "sourceOut": 26.5,
-      "masterIn": 36.4,
-      "masterOut": 41.033333
+      "masterIn": 37.2,
+      "masterOut": 41.833333
     },
     {
       "part": "part03",
       "sourceIn": 0.16666666666666666,
       "sourceOut": 4.9,
-      "masterIn": 41.033333,
-      "masterOut": 45.766667
+      "masterIn": 41.833333,
+      "masterOut": 46.566667
     },
     {
       "part": "part03",
       "sourceIn": 5.4,
       "sourceOut": 23.3,
-      "masterIn": 45.766667,
-      "masterOut": 63.666667
+      "masterIn": 46.566667,
+      "masterOut": 64.466667
     },
     {
       "part": "part03",
       "sourceIn": 23.9,
       "sourceOut": 27.3,
-      "masterIn": 63.666667,
-      "masterOut": 67.066667
+      "masterIn": 64.466667,
+      "masterOut": 67.866667
     },
     {
       "part": "part03",
       "sourceIn": 27.9,
       "sourceOut": 30,
-      "masterIn": 67.066667,
-      "masterOut": 69.166667
+      "masterIn": 67.866667,
+      "masterOut": 69.966667
     }
   ]
 }
